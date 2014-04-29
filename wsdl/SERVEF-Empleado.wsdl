@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.servef.es/development/services/SERVEF-Empleado/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SERVEF-Empleado" targetNamespace="http://www.servef.es/development/services/SERVEF-Empleado/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.servef.es/development/services/SERVEF-Empleado/">
+      <xsd:element name="bajaEmpleado">
+      	<xsd:complexType>
+      		<xsd:sequence maxOccurs="1" minOccurs="1">
+
+      			<xsd:element name="dni" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="bajaEmpleadoResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="tns:Confirmacion"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="modifcacionEmpleado">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="empleado" type="tns:Empleado" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="modifcacionEmpleadoResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="tns:Confirmacion"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getEmpleado">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="dni" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getEmpleadoResponse">
+      	<xsd:complexType>
+      		<xsd:sequence maxOccurs="1" minOccurs="1">
+
+      			<xsd:element name="out" type="tns:Empleado" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="altaParo">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="dni" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="altaParoResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="tns:Confirmacion" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="bajaParo">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="dni" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="bajaParoResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+                        <xsd:element name="out" type="tns:Confirmacion" maxOccurs="1" minOccurs="1"></xsd:element>
+                    </xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="renovarParo">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="dni" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="renovarParoResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="tns:Confirmacion" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getEstadoParo">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="dni" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getEstadoParoResponse">
+      	<xsd:complexType>
+
+                    <xsd:sequence minOccurs="1" maxOccurs="1">
+      			<xsd:element name="estado" type="tns:EstadoParo" maxOccurs="1" minOccurs="0"></xsd:element>
+                        <xsd:element name="error" type="tns:Confirmacion" maxOccurs="1" minOccurs="0"></xsd:element>
+                    </xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="matricularCurso">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="dni" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      			<xsd:element name="curso" type="tns:Curso" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="matricularCursoResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="tns:Confirmacion"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="desmatricularCurso">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="dni" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+                        <xsd:element name="curso" type="tns:Curso" maxOccurs="1" minOccurs="1"></xsd:element>
+                    </xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="desmatricularCursoResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="tns:Confirmacion"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    
+      <xsd:complexType name="Empleado">
+      	<xsd:sequence maxOccurs="1" minOccurs="1">
+      		<xsd:element name="dni" type="xsd:string" maxOccurs="1"
+      			minOccurs="1">
+      		</xsd:element>
+
+      		<xsd:element name="nombre" type="xsd:string" maxOccurs="1"
+      			minOccurs="1">
+      		</xsd:element>
+      		<xsd:element name="vidaLaboral" type="tns:Empleo" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="Empleo">
+      	<xsd:sequence>
+      		<xsd:element name="puesto" type="xsd:string"></xsd:element>
+      		<xsd:element name="sueldoPorHora" type="xsd:float"></xsd:element>
+
+      		<xsd:element name="horasSemanales" type="xsd:float"></xsd:element>
+      		<xsd:element name="fechaInicio" type="xsd:date"></xsd:element>
+      		<xsd:element name="fechaFin" type="xsd:date"></xsd:element>
+      		<xsd:element name="tipoEmpleo" type="tns:TipoEmpleo"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="TipoEmpleo">
+      	<xsd:sequence>
+
+      		<xsd:element name="categoriaProfesional"
+      			type="xsd:string">
+      		</xsd:element>
+      		<xsd:element name="cargo" type="xsd:string"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+    
+            <xsd:complexType name="Confirmacion">
+            	<xsd:sequence>
+            		<xsd:element name="isHecho" type="xsd:boolean"></xsd:element>
+            		<xsd:element name="error" type="xsd:string"></xsd:element>
+            	</xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="altaEmpleado">
+            	<xsd:complexType>
+            		<xsd:sequence maxOccurs="1" minOccurs="1">
+
+            			<xsd:element name="empleado" type="tns:Empleado"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="altaEmpleadoResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+
+            			<xsd:element name="out"
+            				type="tns:Confirmacion">
+            			</xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+            <xsd:complexType name="EstadoParo">
+            	<xsd:sequence>
+            		<xsd:element name="mesesRestantes" type="xsd:int"></xsd:element>
+            		<xsd:element name="fechaInicio" type="xsd:date"></xsd:element>
+            		<xsd:element name="fechaFin" type="xsd:date"></xsd:element>
+            		<xsd:element name="prestacion" type="xsd:float"></xsd:element>
+            	</xsd:sequence>
+            </xsd:complexType>
+    
+            <xsd:complexType name="Curso">
+            	<xsd:sequence>
+            		<xsd:element name="nombre" type="xsd:string"></xsd:element>
+            		<xsd:element name="tipoEmpelo" type="tns:TipoEmpleo"></xsd:element>
+            		<xsd:element name="fechaInicio" type="xsd:date"></xsd:element>
+            		<xsd:element name="fechaFin" type="xsd:date"></xsd:element>
+            	</xsd:sequence>
+            </xsd:complexType>
+    </xsd:schema>      </wsdl:types>
+  <wsdl:message name="bajaEmpleadoRequest">
+  	<wsdl:part name="parameters" element="tns:bajaEmpleado"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="bajaEmpleadoResponse">
+  	<wsdl:part name="parameters" element="tns:bajaEmpleadoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifcacionEmpleadoRequest">
+  	<wsdl:part name="parameters" element="tns:modifcacionEmpleado"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifcacionEmpleadoResponse">
+  	<wsdl:part name="parameters" element="tns:modifcacionEmpleadoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEmpleadoRequest">
+  	<wsdl:part name="parameters" element="tns:getEmpleado"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEmpleadoResponse">
+  	<wsdl:part name="parameters" element="tns:getEmpleadoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="altaParoRequest">
+  	<wsdl:part name="parameters" element="tns:altaParo"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="altaParoResponse">
+  	<wsdl:part name="parameters" element="tns:altaParoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="bajaParoRequest">
+  	<wsdl:part name="parameters" element="tns:bajaParo"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="bajaParoResponse">
+  	<wsdl:part name="parameters" element="tns:bajaParoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="renovarParoRequest">
+  	<wsdl:part name="parameters" element="tns:renovarParo"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="renovarParoResponse">
+  	<wsdl:part name="parameters" element="tns:renovarParoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEstadoParoRequest">
+  	<wsdl:part name="parameters" element="tns:getEstadoParo"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEstadoParoResponse">
+  	<wsdl:part name="parameters" element="tns:getEstadoParoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="matricularCursoRequest">
+  	<wsdl:part name="parameters" element="tns:matricularCurso"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="matricularCursoResponse">
+  	<wsdl:part name="parameters" element="tns:matricularCursoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="desmatricularCursoRequest">
+  	<wsdl:part name="parameters" element="tns:desmatricularCurso"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="desmatricularCursoResponse">
+  	<wsdl:part name="parameters" element="tns:desmatricularCursoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="altaEmpleadoRequest">
+  	<wsdl:part name="parameters" element="tns:altaEmpleado"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="altaEmpleadoResponse">
+  	<wsdl:part name="parameters" element="tns:altaEmpleadoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="SERVEF-Empleado">
+    <wsdl:operation name="bajaEmpleado">
+    	<wsdl:input message="tns:bajaEmpleadoRequest"></wsdl:input>
+    	<wsdl:output message="tns:bajaEmpleadoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifcacionEmpleado">
+    	<wsdl:input message="tns:modifcacionEmpleadoRequest"></wsdl:input>
+    	<wsdl:output message="tns:modifcacionEmpleadoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmpleado">
+    	<wsdl:input message="tns:getEmpleadoRequest"></wsdl:input>
+    	<wsdl:output message="tns:getEmpleadoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="altaParo">
+    	<wsdl:input message="tns:altaParoRequest"></wsdl:input>
+    	<wsdl:output message="tns:altaParoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="bajaParo">
+    	<wsdl:input message="tns:bajaParoRequest"></wsdl:input>
+    	<wsdl:output message="tns:bajaParoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="renovarParo">
+    	<wsdl:input message="tns:renovarParoRequest"></wsdl:input>
+    	<wsdl:output message="tns:renovarParoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEstadoParo">
+    	<wsdl:input message="tns:getEstadoParoRequest"></wsdl:input>
+    	<wsdl:output message="tns:getEstadoParoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="matricularCurso">
+    	<wsdl:input message="tns:matricularCursoRequest"></wsdl:input>
+    	<wsdl:output message="tns:matricularCursoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="desmatricularCurso">
+    	<wsdl:input message="tns:desmatricularCursoRequest"></wsdl:input>
+    	<wsdl:output message="tns:desmatricularCursoResponse"></wsdl:output>
+    </wsdl:operation>    <wsdl:operation name="altaEmpleado">    	<wsdl:input message="tns:altaEmpleadoRequest"></wsdl:input>    	<wsdl:output message="tns:altaEmpleadoResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SERVEF-EmpleadoSOAP" type="tns:SERVEF-Empleado">
+  	<soap:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+  	<wsdl:operation name="altaEmpleado">
+  		<soap:operation
+  			soapAction="http://www.servef.es/development/services/SERVEF-Empleado/altaEmpleado" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="bajaEmpleado">
+  		<soap:operation
+  			soapAction="http://www.servef.es/development/services/SERVEF-Empleado/bajaEmpleado" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="modifcacionEmpleado">
+  		<soap:operation
+  			soapAction="http://www.servef.es/development/services/SERVEF-Empleado/modifcacionEmpleado" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="getEmpleado">
+  		<soap:operation
+  			soapAction="http://www.servef.es/development/services/SERVEF-Empleado/getEmpleado" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="altaParo">
+  		<soap:operation
+  			soapAction="http://www.servef.es/development/services/SERVEF-Empleado/altaParo" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="bajaParo">
+  		<soap:operation
+  			soapAction="http://www.servef.es/development/services/SERVEF-Empleado/bajaParo" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="renovarParo">
+  		<soap:operation
+  			soapAction="http://www.servef.es/development/services/SERVEF-Empleado/renovarParo" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="getEstadoParo">
+  		<soap:operation
+  			soapAction="http://www.servef.es/development/services/SERVEF-Empleado/getEstadoParo" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="matricularCurso">
+  		<soap:operation
+  			soapAction="http://www.servef.es/development/services/SERVEF-Empleado/matricularCurso" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="desmatricularCurso">
+  		<soap:operation
+  			soapAction="http://www.servef.es/development/services/SERVEF-Empleado/desmatricularCurso" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SERVEF-Empleado">
+    <wsdl:port binding="tns:SERVEF-EmpleadoSOAP" name="SERVEF-EmpleadoSOAP">
+      <soap:address location="http://www.servef.es/development/services/SERVEF-Empleado"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

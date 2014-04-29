@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/servicioNotificacion/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="servicioNotificacion" targetNamespace="http://www.example.org/servicioNotificacion/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.org/servicioNotificacion/">
+      <xsd:element name="enviarEmail">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="destinatario" type="xsd:string"/>
+            <xsd:element name="asunto" type="xsd:string"/>
+            <xsd:element name="mensaje" type="xsd:string"/>
+            <xsd:element name="conCopia" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="enviarEmailResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="error" type="xsd:string"/>
+            <xsd:element name="success" type="xsd:boolean"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="enviarSMS">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="destinatario" type="xsd:string"></xsd:element>
+      			<xsd:element name="mensaje" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="enviarSMSResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="error" type="xsd:string"/>
+            	<xsd:element name="success" type="xsd:boolean"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="enviarEmailRequest">
+    <wsdl:part element="tns:enviarEmail" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="enviarEmailResponse">
+    <wsdl:part element="tns:enviarEmailResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="enviarSMSRequest">
+  	<wsdl:part name="parameters" element="tns:enviarSMS"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="enviarSMSResponse">
+  	<wsdl:part name="parameters" element="tns:enviarSMSResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="servicioNotificacion">
+    <wsdl:operation name="enviarEmail">
+      <wsdl:input message="tns:enviarEmailRequest"/>
+      <wsdl:output message="tns:enviarEmailResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="enviarSMS">
+    	<wsdl:input message="tns:enviarSMSRequest"></wsdl:input>
+    	<wsdl:output message="tns:enviarSMSResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="servicioNotificacionSOAP" type="tns:servicioNotificacion">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="enviarEmail">
+      <soap:operation soapAction="http://www.example.org/servicioNotificacion/enviarEmail"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="servicioNotificacion">
+    <wsdl:port binding="tns:servicioNotificacionSOAP" name="servicioNotificacionSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

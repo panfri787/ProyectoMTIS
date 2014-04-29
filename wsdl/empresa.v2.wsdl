@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.empresa.org/ws" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="empresa" targetNamespace="http://www.empresa.org/ws">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.empresa.org/ws">
+      <xsd:element name="Empleado" type="tns:EmpleadoTYPE">
+      </xsd:element>
+      <xsd:element name="Confirmacion">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="isHecho" type="xsd:boolean" />
+          	<xsd:element name="error" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>                                          <xsd:element name="Empleo" type="tns:EmpleoTYPE"></xsd:element>      <xsd:complexType name="EmpleoTYPE">      	<xsd:sequence>      		<xsd:element name="puesto" type="xsd:string"></xsd:element>      		<xsd:element name="horasSemanales" type="xsd:float"></xsd:element>      		<xsd:element name="sueldoPorHora" type="xsd:float"></xsd:element>      		<xsd:element name="fechaInicio" type="xsd:date"></xsd:element>      		<xsd:element name="fechaFin" type="xsd:date"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+            <xsd:element name="DNI" type="xsd:string"></xsd:element>
+        
+            <xsd:element name="EmpleadoYEmpleo"
+            	type="tns:EmpleadoYEmpleoTYPE">
+            </xsd:element>
+            
+            <xsd:complexType name="EmpleadoYEmpleoTYPE">
+            	<xsd:sequence>
+            		<xsd:element name="empleado"
+            			type="tns:EmpleadoTYPE">
+            		</xsd:element>
+            		<xsd:element name="empleo" type="tns:EmpleoTYPE"></xsd:element>
+            	</xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="EmpleadoTYPE">
+            	<xsd:sequence>
+            		<xsd:element name="dni" type="xsd:string"></xsd:element>
+            		<xsd:element name="numSeguridadSocial"
+            			type="xsd:string">
+            		</xsd:element>
+            		<xsd:element name="nombre" type="xsd:string"></xsd:element>
+            		<xsd:element name="apellido1" type="xsd:string"></xsd:element>
+            		<xsd:element name="apellido2" type="xsd:string"></xsd:element>
+            	</xsd:sequence>
+            </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="empleadoDNI">
+    <wsdl:part name="empleadoDNI" element="tns:DNI"/>
+  </wsdl:message>
+  <wsdl:message name="confirmacion">
+    <wsdl:part element="tns:Confirmacion" name="confirmacion"/>
+  </wsdl:message>
+  <wsdl:message name="EmpleadoYEmpleo">
+  	<wsdl:part name="empleado" element="tns:Empleado"></wsdl:part>
+  	<wsdl:part name="empleo" element="tns:Empleo"></wsdl:part>
+  </wsdl:message>
+  
+  <wsdl:message name="ProcesoBajaEmpleado">
+    <wsdl:part name="parameter" element="tns:DNI"/>
+  </wsdl:message>
+  <wsdl:message name="ProcesoBajaEmpleadoResponse">
+    <wsdl:part name="parameter" element="tns:Confirmacion"/>
+  </wsdl:message>
+  
+  <wsdl:message name="BajaEmpleadoLDAP">
+    <wsdl:part name="parameter" element="tns:DNI"/>
+  </wsdl:message>
+  <wsdl:message name="BajaEmpleadoLDAPResponse">
+    <wsdl:part name="parameter" element="tns:Confirmacion"/>
+  </wsdl:message>
+  
+  <wsdl:message name="BajaEmpleadoBD">
+    <wsdl:part name="parameter" element="tns:DNI"/>
+  </wsdl:message>
+  <wsdl:message name="BajaEmpleadoBDResponse">
+    <wsdl:part name="parameter" element="tns:Confirmacion"/>
+  </wsdl:message>
+  
+  <wsdl:message name="BajaEmpleadoSeguroMedico">
+    <wsdl:part name="parameter" element="tns:DNI"/>
+  </wsdl:message>
+  <wsdl:message name="BajaEmpleadoSeguroMedicoResponse">
+    <wsdl:part name="parameter" element="tns:Confirmacion"/>
+  </wsdl:message>
+  
+  <wsdl:message name="BajaEmpleadoServiciosAsociados">
+    <wsdl:part name="parameter" element="tns:DNI"/>
+  </wsdl:message>
+  <wsdl:message name="BajaEmpleadoServiciosAsociadosResponse">
+    <wsdl:part name="parameter" element="tns:Confirmacion"/>
+  </wsdl:message>
+  
+  <wsdl:message name="NotificarBajaAEmpleado">
+    <wsdl:part name="parameter" element="tns:DNI"/>
+  </wsdl:message>
+  <wsdl:message name="NotificarBajaAEmpleadoResponse">
+    <wsdl:part name="parameter" element="tns:Confirmacion"/>
+  </wsdl:message>
+  
+  <wsdl:message name="ProcesoAltaEmpleado">
+    <wsdl:part name="parameter" element="tns:EmpleadoYEmpleo" />
+  </wsdl:message>
+  <wsdl:message name="ProcesoAltaEmpleadoResponse">
+    <wsdl:part name="parameter" element="tns:Confirmacion"/>
+  </wsdl:message>
+  
+  <wsdl:message name="AltaEmpleadoLDAP">
+    <wsdl:part name="parameter" element="tns:EmpleadoYEmpleo" />
+  </wsdl:message>
+  <wsdl:message name="AltaEmpleadoLDAPResponse">
+    <wsdl:part name="parameter" element="tns:Confirmacion"/>
+  </wsdl:message>
+  
+  <wsdl:message name="AltaEmpleadoBD">
+    <wsdl:part name="parameter" element="tns:EmpleadoYEmpleo" />
+  </wsdl:message>
+  <wsdl:message name="AltaEmpleadoBDResponse">
+    <wsdl:part name="parameter" element="tns:Confirmacion"/>
+  </wsdl:message>
+  
+  <wsdl:message name="AltaEmpleadoSeguroMedico">
+    <wsdl:part name="parameter" element="tns:EmpleadoYEmpleo" />
+  </wsdl:message>
+  <wsdl:message name="AltaEmpleadoSeguroMedicoResponse">
+    <wsdl:part name="parameter" element="tns:Confirmacion"/>
+  </wsdl:message>
+  
+  <wsdl:message name="AltaEmpleadoServiciosAsociados">
+    <wsdl:part name="parameter" element="tns:EmpleadoYEmpleo" />
+  </wsdl:message>
+  <wsdl:message name="AltaEmpleadoServiciosAsociadosResponse">
+    <wsdl:part name="parameter" element="tns:Confirmacion"/>
+  </wsdl:message>
+  
+  <wsdl:message name="NotificarAltaAEmpleado">
+    <wsdl:part name="parameter" element="tns:EmpleadoYEmpleo" />
+  </wsdl:message>
+  <wsdl:message name="NotificarAltaAEmpleadoResponse">
+    <wsdl:part name="parameter" element="tns:Confirmacion"/>
+  </wsdl:message>
+  
+  <wsdl:portType name="empresa">
+    <wsdl:operation name="ProcesoBajaEmpleado">
+      <wsdl:input message="tns:ProcesoBajaEmpleado"/>
+      <wsdl:output message="tns:ProcesoBajaEmpleadoResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="BajaEmpleadoLDAP">
+    	<wsdl:input message="tns:BajaEmpleadoLDAP"></wsdl:input>
+    	<wsdl:output message="tns:BajaEmpleadoLDAPResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaEmpleadoBD">
+    	<wsdl:input message="tns:BajaEmpleadoBD"></wsdl:input>
+    	<wsdl:output message="tns:BajaEmpleadoBDResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaEmpleadoSeguroMedico">
+    	<wsdl:input message="tns:BajaEmpleadoSeguroMedico"></wsdl:input>
+    	<wsdl:output message="tns:BajaEmpleadoSeguroMedicoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaEmpleadoServiciosAsociados">
+    	<wsdl:input message="tns:BajaEmpleadoServiciosAsociados"></wsdl:input>
+    	<wsdl:output message="tns:BajaEmpleadoServiciosAsociadosResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NotificarBajaAEmpleado">
+    	<wsdl:input message="tns:NotificarBajaAEmpleado"></wsdl:input>
+    	<wsdl:output message="tns:NotificarBajaAEmpleadoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcesoAltaEmpleado">
+    	<wsdl:input message="tns:ProcesoAltaEmpleado"></wsdl:input>
+    	<wsdl:output message="tns:ProcesoAltaEmpleadoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AltaEmpleadoLDAP">
+    	<wsdl:input message="tns:AltaEmpleadoLDAP"></wsdl:input>
+    	<wsdl:output message="tns:AltaEmpleadoLDAPResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AltaEmpleadoBD">
+    	<wsdl:input message="tns:AltaEmpleadoBD"></wsdl:input>
+    	<wsdl:output message="tns:AltaEmpleadoBDResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AltaEmpleadoSeguroMedico">
+    	<wsdl:input message="tns:AltaEmpleadoSeguroMedico"></wsdl:input>
+    	<wsdl:output message="tns:AltaEmpleadoSeguroMedicoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AltaEmpleadoServiciosAsociados">
+    	<wsdl:input message="tns:AltaEmpleadoServiciosAsociados"></wsdl:input>
+    	<wsdl:output message="tns:AltaEmpleadoServiciosAsociadosResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NotificarAltaAEmpleado">
+    	<wsdl:input message="tns:NotificarAltaAEmpleado"></wsdl:input>
+    	<wsdl:output message="tns:NotificarAltaAEmpleadoResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="empresaSOAP" type="tns:empresa">
+
+  	<soap:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+  	<wsdl:operation name="ProcesoBajaEmpleado">
+
+  		<soap:operation
+  			soapAction="http://www.empresa.org/ws/ProcesoBajaEmpleado" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="ProcesoAltaEmpleado">
+
+  		<soap:operation
+  			soapAction="http://www.empresa.org/ws/ProcesoAltaEmpleado" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="BajaEmpleadoLDAP">
+
+  		<soap:operation
+  			soapAction="http://www.empresa.org/ws/BajaEmpleadoLDAP" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="BajaEmpleadoBD">
+
+  		<soap:operation
+  			soapAction="http://www.empresa.org/ws/BajaEmpleadoBD" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="BajaEmpleadoSeguroMedico">
+
+  		<soap:operation
+  			soapAction="http://www.empresa.org/ws/BajaEmpleadoSeguroMedico" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="BajaEmpleadoServiciosAsociados">
+
+  		<soap:operation
+  			soapAction="http://www.empresa.org/ws/BajaEmpleadoServiciosAsociados" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="NotificarBajaAEmpleado">
+
+  		<soap:operation
+  			soapAction="http://www.empresa.org/ws/NotificarBajaAEmpleado" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="AltaEmpleadoLDAP">
+
+  		<soap:operation
+  			soapAction="http://www.empresa.org/ws/AltaEmpleadoLDAP" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="AltaEmpleadoBD">
+
+  		<soap:operation
+  			soapAction="http://www.empresa.org/ws/AltaEmpleadoBD" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="AltaEmpleadoSeguroMedico">
+
+  		<soap:operation
+  			soapAction="http://www.empresa.org/ws/AltaEmpleadoSeguroMedico" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="AltaEmpleadoServiciosAsociados">
+
+  		<soap:operation
+  			soapAction="http://www.empresa.org/ws/AltaEmpleadoServiciosAsociados" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="NotificarAltaAEmpleado">
+
+  		<soap:operation
+  			soapAction="http://www.empresa.org/ws/NotificarAltaAEmpleado" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="empresa">
+    <wsdl:port binding="tns:empresaSOAP" name="empresaSOAP">
+      <soap:address location="http://localhost:8080/empresa"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

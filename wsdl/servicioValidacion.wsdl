@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/servicioValidacion/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="servicioValidacion" targetNamespace="http://www.example.org/servicioValidacion/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.org/servicioValidacion/">
+      <xsd:element name="validarDNI">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="dni" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validarDNIResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="error" type="xsd:string"/>
+            <xsd:element name="success" type="xsd:boolean"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validarSS">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="numeroSS" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validarSSResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="error" type="xsd:string"/>
+            	<xsd:element name="success" type="xsd:boolean"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validarIBAN">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="iban" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validarIBANResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="error" type="xsd:string"/>
+            	<xsd:element name="success" type="xsd:boolean"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validarCIF">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="cif" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validarCIFResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="error" type="xsd:string"/>
+            	<xsd:element name="success" type="xsd:boolean"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validarFecha">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="fecha" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validarFechaResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="error" type="xsd:string"/>
+            	<xsd:element name="success" type="xsd:boolean"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validarTelefono">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="telefono" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validarTelefonoResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="error" type="xsd:string"/>
+            	<xsd:element name="success" type="xsd:boolean"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validarEmail">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="email" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validarEmailResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="error" type="xsd:string"/>
+            	<xsd:element name="success" type="xsd:boolean"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="validarDNIRequest">
+    <wsdl:part element="tns:validarDNI" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="validarDNIResponse">
+    <wsdl:part element="tns:validarDNIResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="validarSSRequest">
+  	<wsdl:part name="parameters" element="tns:validarSS"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validarSSResponse">
+  	<wsdl:part name="parameters" element="tns:validarSSResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validarIBANRequest">
+  	<wsdl:part name="parameters" element="tns:validarIBAN"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validarIBANResponse">
+  	<wsdl:part name="parameters" element="tns:validarIBANResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validarCIFRequest">
+  	<wsdl:part name="parameters" element="tns:validarCIF"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validarCIFResponse">
+  	<wsdl:part name="parameters" element="tns:validarCIFResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validarFechaRequest">
+  	<wsdl:part name="parameters" element="tns:validarFecha"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validarFechaResponse">
+  	<wsdl:part name="parameters" element="tns:validarFechaResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validarTelefonoRequest">
+  	<wsdl:part name="parameters" element="tns:validarTelefono"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validarTelefonoResponse">
+  	<wsdl:part name="parameters" element="tns:validarTelefonoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validarEmailRequest">
+  	<wsdl:part name="parameters" element="tns:validarEmail"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validarEmailResponse">
+  	<wsdl:part name="parameters" element="tns:validarEmailResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="servicioValidacion">
+    <wsdl:operation name="validarDNI">
+      <wsdl:input message="tns:validarDNIRequest"/>
+      <wsdl:output message="tns:validarDNIResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="validarSS">
+    	<wsdl:input message="tns:validarSSRequest"></wsdl:input>
+    	<wsdl:output message="tns:validarSSResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validarIBAN">
+    	<wsdl:input message="tns:validarIBANRequest"></wsdl:input>
+    	<wsdl:output message="tns:validarIBANResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validarCIF">
+    	<wsdl:input message="tns:validarCIFRequest"></wsdl:input>
+    	<wsdl:output message="tns:validarCIFResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validarFecha">
+    	<wsdl:input message="tns:validarFechaRequest"></wsdl:input>
+    	<wsdl:output message="tns:validarFechaResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validarTelefono">
+    	<wsdl:input message="tns:validarTelefonoRequest"></wsdl:input>
+    	<wsdl:output message="tns:validarTelefonoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validarEmail">
+    	<wsdl:input message="tns:validarEmailRequest"></wsdl:input>
+    	<wsdl:output message="tns:validarEmailResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="servicioValidacionSOAP" type="tns:servicioValidacion">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="validarDNI">
+      <soap:operation soapAction="http://www.example.org/servicioValidacion/validarDNI"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="servicioValidacion">
+    <wsdl:port binding="tns:servicioValidacionSOAP" name="servicioValidacionSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

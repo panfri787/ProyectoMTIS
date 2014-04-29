@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/ServicioSS/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ServicioSS" targetNamespace="http://www.example.org/ServicioSS/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.org/ServicioSS/">
+      <xsd:element name="altaEnBD">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="empleado" type="tns:Empleado" maxOccurs="1" minOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="altaEnBDResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="tns:Confirmacion" maxOccurs="1" minOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="bajaEnBD">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="dni" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="bajaEnBDResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="tns:Confirmacion" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="actualizarVidaLaboral">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="dni" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      			<xsd:element name="empleos" type="tns:Empleo" maxOccurs="unbounded" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="actualizarVidaLaboralResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="tns:Confirmacion" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="enviarVidaLaboral">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="dni" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      			<xsd:element name="email" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="enviarVidaLaboralResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="tns:Confirmacion"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    
+      <xsd:complexType name="Empleo">
+      	<xsd:sequence>
+      		<xsd:element name="puesto" type="xsd:string"></xsd:element>
+      		<xsd:element name="sueldoPorHora" type="xsd:float"></xsd:element>
+      		<xsd:element name="horasSemanales" type="xsd:float"></xsd:element>
+      		<xsd:element name="fechaInicio" type="xsd:date"></xsd:element>
+      		<xsd:element name="fechaFin" type="xsd:date"></xsd:element>
+      		<xsd:element name="tipoEmpleo" type="tns:TipoEmpleo"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="TipoEmpleo">
+      	<xsd:sequence>
+      		<xsd:element name="categoriaProfesional"
+      			type="xsd:string">
+      		</xsd:element>
+      		<xsd:element name="cargo" type="xsd:string"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="Empleado">
+      	<xsd:sequence>
+      		<xsd:element name="dni" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="nombre" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="email" type="xsd:string"></xsd:element>
+      		<xsd:element name="vidaLaboral" type="tns:Empleo" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="Confirmacion">
+      	<xsd:sequence>
+      		<xsd:element name="isHecho" type="xsd:boolean" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="mensaje" type="xsd:string"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="altaEnBDRequest">
+    <wsdl:part element="tns:altaEnBD" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="altaEnBDResponse">
+    <wsdl:part element="tns:altaEnBDResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="bajaEnBDRequest">
+  	<wsdl:part name="parameters" element="tns:bajaEnBD"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="bajaEnBDResponse">
+  	<wsdl:part name="parameters" element="tns:bajaEnBDResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="actualizarVidaLaboralRequest">
+  	<wsdl:part name="parameters" element="tns:actualizarVidaLaboral"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="actualizarVidaLaboralResponse">
+  	<wsdl:part name="parameters" element="tns:actualizarVidaLaboralResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="enviarVidaLaboralRequest">
+  	<wsdl:part name="parameters" element="tns:enviarVidaLaboral"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="enviarVidaLaboralResponse">
+  	<wsdl:part name="parameters" element="tns:enviarVidaLaboralResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ServicioSS">
+    <wsdl:operation name="altaEnBD">
+      <wsdl:input message="tns:altaEnBDRequest"/>
+      <wsdl:output message="tns:altaEnBDResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="bajaEnBD">
+    	<wsdl:input message="tns:bajaEnBDRequest"></wsdl:input>
+    	<wsdl:output message="tns:bajaEnBDResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizarVidaLaboral">
+    	<wsdl:input message="tns:actualizarVidaLaboralRequest"></wsdl:input>
+    	<wsdl:output message="tns:actualizarVidaLaboralResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="enviarVidaLaboral">
+    	<wsdl:input message="tns:enviarVidaLaboralRequest"></wsdl:input>
+    	<wsdl:output message="tns:enviarVidaLaboralResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicioSSSOAP" type="tns:ServicioSS">
+  	<soap:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+  	<wsdl:operation name="altaEnBD">
+  		<soap:operation
+  			soapAction="http://www.example.org/ServicioSS/altaEnBD" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="bajaEnBD">
+  		<soap:operation
+  			soapAction="http://www.example.org/ServicioSS/bajaEnBD" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="actualizarVidaLaboral">
+  		<soap:operation
+  			soapAction="http://www.example.org/ServicioSS/actualizarVidaLaboral" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="enviarVidaLaboral">
+  		<soap:operation
+  			soapAction="http://www.example.org/ServicioSS/enviarVidaLaboral" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioSS">
+    <wsdl:port binding="tns:ServicioSSSOAP" name="ServicioSSSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

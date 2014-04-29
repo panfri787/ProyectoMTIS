@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.servef.es/development/services/SERVEF-ServicioEmpleo/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SERVEF-ServicioEmpleo" targetNamespace="http://www.servef.es/development/services/SERVEF-ServicioEmpleo/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.servef.es/development/services/SERVEF-ServicioEmpleo/">
+      <xsd:element name="publicarOferta">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="oferta" type="tns:Empleo" maxOccurs="1" minOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="publicarOfertaResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="tns:Confirmacion" maxOccurs="1" minOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="subscribirOfertas">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="dni" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      			<xsd:element name="email" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      			<xsd:element name="tipoEmpleo" type="tns:TipoEmpleo" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="subscribirOfertasResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="tns:Confirmacion"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="eliminarOferta">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="idOferta" type="xsd:int" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="eliminarOfertaResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="tns:Confirmacion" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="modificarOferta">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+                        <xsd:element name="oferta" type="tns:Empleo" maxOccurs="1" minOccurs="1"></xsd:element>
+                    </xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="modificarOfertaResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="tns:Confirmacion" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="listarOfertasDisponibles">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="tipoProfesional" type="tns:TipoEmpleo" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="listarOfertasDisponiblesResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="ofertas" type="tns:Empleo" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    
+      <xsd:complexType name="Empleo">
+      	<xsd:sequence>
+      		<xsd:element name="puesto" type="xsd:string"></xsd:element>
+      		<xsd:element name="sueldoAnual" type="xsd:float"></xsd:element>
+      		<xsd:element name="horasSemanales" type="xsd:float"></xsd:element>
+      		<xsd:element name="fechaInicio" type="xsd:date"></xsd:element>
+      		<xsd:element name="duracionContrato" type="xsd:string"></xsd:element>
+      		<xsd:element name="tipoEmpleo" type="tns:TipoEmpleo"></xsd:element>
+      		<xsd:element name="descripcion" type="xsd:string"></xsd:element>
+      		<xsd:element name="requisitos" type="xsd:string"></xsd:element>
+      		<xsd:element name="id" type="xsd:int"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="TipoEmpleo">
+      	<xsd:sequence>
+
+
+      		<xsd:element name="categoriaProfesional" type="xsd:string"></xsd:element>
+      		<xsd:element name="cargo" type="xsd:string"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="Confirmacion">
+      	<xsd:sequence>
+      		<xsd:element name="isHecho" type="xsd:boolean" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="error" type="xsd:string"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="publicarOfertaRequest">
+    <wsdl:part element="tns:publicarOferta" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="publicarOfertaResponse">
+    <wsdl:part element="tns:publicarOfertaResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="subscribirOfertasRequest">
+  	<wsdl:part name="parameters" element="tns:subscribirOfertas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="subscribirOfertasResponse">
+  	<wsdl:part name="parameters" element="tns:subscribirOfertasResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="eliminarOfertaRequest">
+  	<wsdl:part name="parameters" element="tns:eliminarOferta"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="eliminarOfertaResponse">
+  	<wsdl:part name="parameters" element="tns:eliminarOfertaResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modificarOfertaRequest">
+  	<wsdl:part name="parameters" element="tns:modificarOferta"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modificarOfertaResponse">
+  	<wsdl:part name="parameters" element="tns:modificarOfertaResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listarOfertasDisponiblesRequest">
+  	<wsdl:part name="parameters" element="tns:listarOfertasDisponibles"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listarOfertasDisponiblesResponse">
+  	<wsdl:part name="parameters" element="tns:listarOfertasDisponiblesResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="SERVEF-ServicioEmpleo">
+    <wsdl:operation name="publicarOferta">
+      <wsdl:input message="tns:publicarOfertaRequest"/>
+      <wsdl:output message="tns:publicarOfertaResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="subscribirOfertas">
+    	<wsdl:input message="tns:subscribirOfertasRequest"></wsdl:input>
+    	<wsdl:output message="tns:subscribirOfertasResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminarOferta">
+    	<wsdl:input message="tns:eliminarOfertaRequest"></wsdl:input>
+    	<wsdl:output message="tns:eliminarOfertaResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarOferta">
+    	<wsdl:input message="tns:modificarOfertaRequest"></wsdl:input>
+    	<wsdl:output message="tns:modificarOfertaResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listarOfertasDisponibles">
+    	<wsdl:input message="tns:listarOfertasDisponiblesRequest"></wsdl:input>
+    	<wsdl:output message="tns:listarOfertasDisponiblesResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SERVEF-ServicioEmpleoSOAP"
+  	type="tns:SERVEF-ServicioEmpleo">
+  	<soap:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+  	<wsdl:operation name="publicarOferta">
+  		<soap:operation
+  			soapAction="http://www.servef.es/development/services/SERVEF-ServicioEmpleo/publicarOferta" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="subscribirOfertas">
+  		<soap:operation
+  			soapAction="http://www.servef.es/development/services/SERVEF-ServicioEmpleo/subscribirOfertas" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="eliminarOferta">
+  		<soap:operation
+  			soapAction="http://www.servef.es/development/services/SERVEF-ServicioEmpleo/eliminarOferta" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="modificarOferta">
+  		<soap:operation
+  			soapAction="http://www.servef.es/development/services/SERVEF-ServicioEmpleo/modificarOferta" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="listarOfertasDisponibles">
+  		<soap:operation
+  			soapAction="http://www.servef.es/development/services/SERVEF-ServicioEmpleo/listarOfertasDisponibles" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SERVEF-ServicioEmpleo">
+    <wsdl:port binding="tns:SERVEF-ServicioEmpleoSOAP" name="SERVEF-ServicioEmpleoSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

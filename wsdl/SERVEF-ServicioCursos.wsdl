@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.servef.es/development/services/SERVEF-ServicioCursos/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SERVEF-ServicioCursos" targetNamespace="http://www.servef.es/development/services/SERVEF-ServicioCursos/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.servef.es/development/services/SERVEF-ServicioCursos/">
+      <xsd:element name="altaCurso">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="curso" type="tns:Curso" maxOccurs="1" minOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="altaCursoResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+                        <xsd:element name="out" type="tns:Confirmacion" maxOccurs="1" minOccurs="1"/>
+                    </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="bajaCurso">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="idCurso" type="xsd:int" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="bajaCursoResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="tns:Confirmacion" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="modificarCurso">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="curso" type="tns:Curso" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="modificarCursoResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="tns:Confirmacion" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="listarCursos">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="tipoProfesional" type="tns:TipoEmpleo" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="listarCursosResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="cursos" type="tns:Curso" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="subscribirCursos">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="dni" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+      			<xsd:element name="tipoProfesional"
+      				type="tns:TipoEmpleo" maxOccurs="1" minOccurs="0">
+      			</xsd:element>
+      			<xsd:element name="email" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="subscribirCursosResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="tns:Confirmacion" maxOccurs="1" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    
+      <xsd:complexType name="Curso">
+      	<xsd:sequence>
+      		<xsd:element name="nombre" type="xsd:string"></xsd:element>
+      		<xsd:element name="tipoEmpleo" type="tns:TipoEmpleo"></xsd:element>
+      		<xsd:element name="fechaInicio" type="xsd:date"></xsd:element>
+      		<xsd:element name="fechaFin" type="xsd:date"></xsd:element>
+
+      		<xsd:element name="id" type="xsd:int"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="Confirmacion">
+      	<xsd:sequence>
+      		<xsd:element name="isHecho" type="xsd:boolean" maxOccurs="1" minOccurs="1"></xsd:element>
+      		<xsd:element name="error" type="xsd:string"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+      
+            <xsd:complexType name="TipoEmpleo">
+            	<xsd:sequence>
+            		<xsd:element name="categoriaProfesional"
+            			type="xsd:string">
+            		</xsd:element>
+            		<xsd:element name="cargo" type="xsd:string"></xsd:element>
+            	</xsd:sequence>
+            </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="altaCursoRequest">
+    <wsdl:part element="tns:altaCurso" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="altaCursoResponse">
+    <wsdl:part element="tns:altaCursoResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="bajaCursoRequest">
+  	<wsdl:part name="parameters" element="tns:bajaCurso"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="bajaCursoResponse">
+  	<wsdl:part name="parameters" element="tns:bajaCursoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modificarCursoRequest">
+  	<wsdl:part name="parameters" element="tns:modificarCurso"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modificarCursoResponse">
+  	<wsdl:part name="parameters" element="tns:modificarCursoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listarCursosRequest">
+  	<wsdl:part name="parameters" element="tns:listarCursos"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listarCursosResponse">
+  	<wsdl:part name="parameters" element="tns:listarCursosResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="subscribirCursosRequest">
+  	<wsdl:part name="parameters" element="tns:subscribirCursos"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="subscribirCursosResponse">
+  	<wsdl:part name="parameters" element="tns:subscribirCursosResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="SERVEF-ServicioCursos">
+    <wsdl:operation name="altaCurso">
+      <wsdl:input message="tns:altaCursoRequest"/>
+      <wsdl:output message="tns:altaCursoResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="bajaCurso">
+    	<wsdl:input message="tns:bajaCursoRequest"></wsdl:input>
+    	<wsdl:output message="tns:bajaCursoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarCurso">
+    	<wsdl:input message="tns:modificarCursoRequest"></wsdl:input>
+    	<wsdl:output message="tns:modificarCursoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listarCursos">
+    	<wsdl:input message="tns:listarCursosRequest"></wsdl:input>
+    	<wsdl:output message="tns:listarCursosResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="subscribirCursos">
+    	<wsdl:input message="tns:subscribirCursosRequest"></wsdl:input>
+    	<wsdl:output message="tns:subscribirCursosResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SERVEF-ServicioCursosSOAP"
+  	type="tns:SERVEF-ServicioCursos">
+  	<soap:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+  	<wsdl:operation name="altaCurso">
+  		<soap:operation
+  			soapAction="http://www.servef.es/development/services/SERVEF-ServicioCursos/altaCurso" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="bajaCurso">
+  		<soap:operation
+  			soapAction="http://www.servef.es/development/services/SERVEF-ServicioCursos/bajaCurso" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="modificarCurso">
+  		<soap:operation
+  			soapAction="http://www.servef.es/development/services/SERVEF-ServicioCursos/modificarCurso" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="listarCursos">
+  		<soap:operation
+  			soapAction="http://www.servef.es/development/services/SERVEF-ServicioCursos/listarCursos" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="subscribirCursos">
+  		<soap:operation
+  			soapAction="http://www.servef.es/development/services/SERVEF-ServicioCursos/subscribirCursos" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SERVEF-ServicioCursos">
+    <wsdl:port binding="tns:SERVEF-ServicioCursosSOAP" name="SERVEF-ServicioCursosSOAP">
+      <soap:address location="http://www.servef.es/development/services/SERVEF-ServicioCursos/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
