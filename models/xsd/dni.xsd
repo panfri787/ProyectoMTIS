@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/dni/"
+	targetNamespace="http://www.example.org/dni/">
+
+	<complexType name="dni-flat">
+		<sequence>
+			<element name="id" type="string"></element>
+			<element name="birthdate" type="date"></element>
+			<element name="nationality" type="string"></element>
+            <element name="name" type="string"></element>
+			<element name="firstLastName" type="string"></element>
+			<element name="secondLastName" type="string"></element>
+			<element name="birthCity" type="string"></element>
+			<element name="birthState" type="string"></element>
+			<element name="actualAdress" type="string"></element>
+			<element name="actualCity" type="string"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="dni-complexTypes">
+		<sequence>
+			<element name="id" type="string"></element>
+			<element name="completeName" type="tns:completeName"></element>
+			<element name="birthdate" type="date"></element>
+			<element name="nationality" type="string"></element>
+			<element name="birthPlace" type="tns:city"></element>
+			<element name="actualAddress" type="tns:address"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="completeName">
+		<sequence>
+			<element name="name" type="string"></element>
+			<element name="firstLastName" type="string"></element>
+			<element name="secondLastName" type="string"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="city">
+		<sequence>
+			<element name="name" type="string"></element>
+			<element name="state" type="string"></element>
+			<element name="country" type="string"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="address">
+		<sequence>
+			<element name="name" type="string"></element>
+			<element name="number" type="string"></element>
+			<element name="postalCode" type="int"></element>
+			<element name="city" type="tns:city"></element>
+		</sequence>
+	</complexType>
+</schema>
