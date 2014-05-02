@@ -58,7 +58,7 @@
 	</wsdl:binding>
 	<wsdl:service name="FireEmployee">
 		<wsdl:port binding="tns:FireEmployeeSOAP" name="FireEmployeeSOAP">
-			<soap:address location="http://www.example.org/" />
+			<soap:address location="http://www.odehost:8080/ode/processes/FireEmployee" />
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>
