@@ -206,6 +206,56 @@
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
+  	<wsdl:operation name="AltaEmpleadoLDAP">
+  		<soap:operation
+  			soapAction="http://www.empresa.org/ws/AltaEmpleadoLDAP" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="AltaEmpleadoBD">
+  		<soap:operation
+  			soapAction="http://www.empresa.org/ws/AltaEmpleadoBD" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="AltaEmpleadoSeguroMedico">
+  		<soap:operation
+  			soapAction="http://www.empresa.org/ws/AltaEmpleadoSeguroMedico" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="AltaEmpleadoServiciosAsociados">
+  		<soap:operation
+  			soapAction="http://www.empresa.org/ws/AltaEmpleadoServiciosAsociados" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="NotificarAltaAEmpleado">
+  		<soap:operation
+  			soapAction="http://www.empresa.org/ws/NotificarAltaAEmpleado" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="empresa">
     <wsdl:port binding="tns:empresaSOAP" name="empresaSOAP">
