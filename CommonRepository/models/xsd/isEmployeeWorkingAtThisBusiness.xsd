@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/isEmployeeWorkingAtThisBusiness/"
+	targetNamespace="http://www.example.org/isEmployeeWorkingAtThisBusiness/"
+	xmlns:xsd1="http://www.example.org/FireEmployeeReport/">
+
+	<import schemaLocation="FireEmployeeReport.xsd"
+		namespace="http://www.example.org/FireEmployeeReport/"></import>
+	<complexType name="isEmployeeWorkingAtThisBusiness">
+		<sequence>
+			<element name="isCompletedWithoutErrors" type="boolean"></element>
+			<element name="processState" type="string"></element>
+		</sequence>
+	</complexType>
+</schema>
