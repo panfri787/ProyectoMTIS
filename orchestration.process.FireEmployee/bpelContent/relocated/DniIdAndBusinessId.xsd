@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/DniAndBusiness/" targetNamespace="http://www.example.org/DniAndBusiness/">
+    <complexType name="DniIdAndBusinessId">
+    	<sequence>
+    		<element name="dniId" type="string"></element>
+    		<element name="businessId" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="DniIdAndBusinessId" type="tns:DniIdAndBusinessId"></element>
+
+</schema>
