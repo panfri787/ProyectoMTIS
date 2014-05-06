@@ -2,40 +2,26 @@
 <wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
 	xmlns:tns="http://www.example.org/FireEmployee/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="FireEmployee"
+	xmlns:xsd1="http://www.example.org/IsOkAndFireEmployeeReport/" xmlns:pref="http://www.example.org/DniAndBusiness/"
 	targetNamespace="http://www.example.org/FireEmployee/">
 
 	<wsdl:types>
-		<xsd:schema targetNamespace="http://www.example.org/FireEmployee/"
-			xmlns:xsd1="http://www.example.org/IsOkAndFireEmployee/" xmlns:xsd2="http://www.example.org/Bool/">
+		<xsd:schema targetNamespace="http://www.example.org/FireEmployee/">
 
 			<xsd:import schemaLocation="../../../models/xsd/IsOkAndFireEmployeeReport.xsd"
-				namespace="http://www.example.org/IsOkAndFireEmployee/"></xsd:import>
-				
-			<xsd:import schemaLocation="../../../models/xsd/Bool.xsd"
-				namespace="http://www.example.org/Bool/"></xsd:import>
+				namespace="http://www.example.org/IsOkAndFireEmployeeReport/">
+			</xsd:import>
 
-			<xsd:element name="FireEmployee">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="in" type="xsd2:Bool" />
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="FireEmployeeResponse">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="out" type="xsd1:IsOkAndFireEmployeeReport" />
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
+			<xsd:import schemaLocation="../../../models/xsd/DniIdAndBusinessId.xsd" namespace="http://www.example.org/DniAndBusiness/"></xsd:import>
+
 		</xsd:schema>
 
 	</wsdl:types>
 	<wsdl:message name="FireEmployeeRequest">
-		<wsdl:part element="tns:FireEmployee" name="parameters" />
+		<wsdl:part element="pref:DniIdAndBusinessId" name="DniIdAndBusinessId" />
 	</wsdl:message>
 	<wsdl:message name="FireEmployeeResponse">
-		<wsdl:part element="tns:FireEmployeeResponse" name="parameters" />
+		<wsdl:part element="xsd1:IsOkAndFireEmployeeReport" name="IsOkAndFireEmployeeReport" />
 	</wsdl:message>
 	<wsdl:portType name="FireEmployee">
 		<wsdl:operation name="FireEmployee">
@@ -58,7 +44,7 @@
 	</wsdl:binding>
 	<wsdl:service name="FireEmployee">
 		<wsdl:port binding="tns:FireEmployeeSOAP" name="FireEmployeeSOAP">
-			<soap:address location="http://www.odehost:8080/ode/processes/FireEmployee" />
+			<soap:address location="http://www.odehost.com:8080/ode/processes/FireEmployee" />
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>
