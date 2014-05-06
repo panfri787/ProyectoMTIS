@@ -6,4 +6,7 @@
 			<element name="bool" type="boolean"></element>
 		</sequence>
 	</complexType>
+
+
+    <element name="Bool" type="tns:Bool"></element>
 </schema>

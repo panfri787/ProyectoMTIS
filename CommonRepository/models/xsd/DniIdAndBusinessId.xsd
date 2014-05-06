@@ -6,4 +6,6 @@
     		<element name="businessId" type="string"></element>
     	</sequence>
     </complexType>
+
+    <element name="DniIdAndBusinessId" type="tns:DniIdAndBusinessId"></element>
 </schema>
