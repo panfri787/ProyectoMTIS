@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/IsOkAndFireEmployee/"
-	targetNamespace="http://www.example.org/IsOkAndFireEmployee/"
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/IsOkAndFireEmployeeReport/"
+	targetNamespace="http://www.example.org/IsOkAndFireEmployeeReport/"
 	xmlns:xsd1="http://www.example.org/FireEmployeeReport/">
 
 	<import schemaLocation="FireEmployeeReport.xsd"
@@ -12,4 +12,6 @@
 			<element name="fireEmployeeReport" type="xsd1:FireEmployeeReport"></element>
 		</sequence>
 	</complexType>
+
+    <element name="IsOkAndFireEmployeeReport" type="tns:IsOkAndFireEmployeeReport"></element>
 </schema>
