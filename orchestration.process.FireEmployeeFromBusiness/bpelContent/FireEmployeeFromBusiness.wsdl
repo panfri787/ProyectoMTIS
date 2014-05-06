@@ -7,11 +7,11 @@
 	name="FireEmployeeFromBusiness" targetNamespace="http://www.example.org/FireEmployeeFromBusiness/">
 	<wsdl:types>
 		<xsd:schema targetNamespace="http://www.example.org/FireEmployeeFromBusiness/">
-			<xsd:import schemaLocation="../../../models/xsd/String.xsd"
+			<xsd:import schemaLocation="relocated/String.xsd"
 				namespace="http://www.example.org/String/">
 			</xsd:import>
 			<xsd:import
-				schemaLocation="../../../models/xsd/IsOkAndFireEmployeeFromBusinessSate.xsd"
+				schemaLocation="relocated/IsOkAndFireEmployeeFromBusinessSate.xsd"
 				namespace="http://www.example.org/IsOkAndFireEmployeeFromBusinessSate/"></xsd:import>
 		</xsd:schema>
 	</wsdl:types>
@@ -30,7 +30,8 @@
 			<wsdl:output message="tns:FireEmployeeFromBusinessResponse" />
 		</wsdl:operation>
 	</wsdl:portType>
-	<wsdl:binding name="FireEmployeeFromBusinessSOAP" type="tns:FireEmployeeFromBusiness">
+	<wsdl:binding name="FireEmployeeFromBusinessSOAP"
+		type="tns:FireEmployeeFromBusiness">
 		<soap:binding style="document"
 			transport="http://schemas.xmlsoap.org/soap/http" />
 		<wsdl:operation name="FireEmployeeFromBusiness">
@@ -46,7 +47,7 @@
 	</wsdl:binding>
 	<wsdl:service name="FireEmployeeFromBusiness">
 		<wsdl:port binding="tns:FireEmployeeFromBusinessSOAP" name="FireEmployeeFromBusinessSOAP">
-			<soap:address location="http://www.odehost.com/ode/processes/FireEmployeeFromBusiness" />
+			<soap:address location="http://www.odehost.com:8080/ode/processes/FireEmployeeFromBusiness" />
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>

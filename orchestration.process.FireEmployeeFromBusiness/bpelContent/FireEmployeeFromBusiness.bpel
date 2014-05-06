@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpel:process exitOnStandardFault="yes"
+	name="FireEmployeeFromBusiness.bpel" targetNamespace="http://www.example.org/FireEmployeeFromBusiness/"
+	xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+	xmlns:ns="http://www.example.org/FireEmployeeFromBusiness/Artifacts"
+	xmlns:ns0="http://www.example.org/String/" xmlns:ns1="http://www.example.org/IsOkAndFireEmployeeFromBusinessSate/"
+	xmlns:ns2="http://www.example.org/FireEmployeeFromBusiness/">
+	<bpel:import importType="http://schemas.xmlsoap.org/wsdl/"
+		location="FireEmployeeFromBusiness.wsdl" namespace="http://www.example.org/FireEmployeeFromBusiness/" />
+	<bpel:import importType="http://schemas.xmlsoap.org/wsdl/"
+		location="FireEmployeeFromBusinessArtifacts.wsdl" namespace="http://www.example.org/FireEmployeeFromBusiness/Artifacts" />
+	<bpel:partnerLinks>
+		<bpel:partnerLink myRole="FireEmployeeFromBusinessRole"
+			name="bpelProcessPartner" partnerLinkType="ns:FireEmployeeFromBusinessPLT" />
+	</bpel:partnerLinks>
+	<bpel:variables>
+		<!-- //Esto es lo que aparece originalmente, las variables son "element"(de 
+			XML/XSD) en vez de "messageType" (de WSDL) <bpel:variable element="ns0:String" 
+			name="fireEmployeeFromBusinessRequest" /> <bpel:variable element="ns1:IsOkAndFireEmployeeFromBusinessSate" -->
+		<bpel:variable messageType="ns2:FireEmployeeFromBusiness"
+			name="input" />
+		<bpel:variable messageType="ns2:FireEmployeeFromBusinessResponse"
+			name="output" />
+	</bpel:variables>
+	<bpel:sequence name="MainSequence">
+		<bpel:pick createInstance="yes" name="SwitchInvokedOperation">
+			<bpel:onMessage operation="FireEmployeeFromBusiness"
+				partnerLink="bpelProcessPartner" portType="ns2:FireEmployeeFromBusiness"
+				variable="input">
+				<bpel:sequence>
+
+					<!-- 
+					<bpel:assign validate="no" name="Assign">
+						<bpel:copy>
+							<bpel:from>
+								<bpel:literal xml:space="preserve">
+<ns1:IsOkAndFireEmployeeFromBusinessSate xmlns:ns1="http://www.example.org/IsOkAndFireEmployeeFromBusinessSate/">
+<ns1:isCompletedWithoutErrors>true</ns1:isCompletedWithoutErrors>
+<ns1:processState>HelloWorld</ns1:processState>
+</ns1:IsOkAndFireEmployeeFromBusinessSate></bpel:literal>
+							</bpel:from>
+							<bpel:to variable="output"></bpel:to>
+						</bpel:copy>
+
+					</bpel:assign>
+					 -->
+
+					<!-- <bpel:assign validate="no" name="Assign1"> <bpel:copy> <bpel:from 
+						expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"> <![CDATA[aaaa]]> 
+						</bpel:from> <bpel:to variable="fireEmployeeFromBusinessResponse"></bpel:to> 
+						</bpel:copy> </bpel:assign> -->
+                    <bpel:assign validate="no" name="Assign1">
+                        <bpel:copy>
+                            <bpel:from>
+                                <bpel:literal xml:space="preserve"><tns:IsOkAndFireEmployeeFromBusinessSate xmlns:tns="http://www.example.org/IsOkAndFireEmployeeFromBusinessSate/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <isCompletedWithoutErrors>true</isCompletedWithoutErrors>
+  <processState>processState</processState>
+</tns:IsOkAndFireEmployeeFromBusinessSate>
+</bpel:literal>
+                            </bpel:from>
+                            <bpel:to part="IsOkAndFireEmployeeFromBusinessSate" variable="output"></bpel:to>
+                        </bpel:copy>
+                        
+                    </bpel:assign>
+                    <bpel:reply name="ReplyToFireEmployeeFromBusiness"
+						operation="FireEmployeeFromBusiness" partnerLink="bpelProcessPartner"
+						portType="ns2:FireEmployeeFromBusiness" variable="output" />
+				</bpel:sequence>
+			</bpel:onMessage>
+		</bpel:pick>
+	</bpel:sequence>
+</bpel:process>

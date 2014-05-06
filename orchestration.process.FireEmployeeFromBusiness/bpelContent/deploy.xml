@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:FireEmployeeFromBusiness="http://www.example.org/FireEmployeeFromBusiness/">
+  <process name="FireEmployeeFromBusiness:FireEmployeeFromBusiness.bpel">
+    <active>true</active>
+    <retired>false</retired>
+    <process-events generate="all"/>
+    <provide partnerLink="bpelProcessPartner">
+      <service name="FireEmployeeFromBusiness:FireEmployeeFromBusiness" port="FireEmployeeFromBusinessSOAP"/>
+    </provide>
+  </process>
+</deploy>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions xmlns:tns="http://www.example.org/FireEmployeeFromBusiness/" targetNamespace="http://www.example.org/FireEmployeeFromBusiness/Artifacts" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <partnerLinkType name="FireEmployeeFromBusinessPLT" xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+    <role name="FireEmployeeFromBusinessRole" portType="tns:FireEmployeeFromBusiness"/>
+  </partnerLinkType>
+  <import location="FireEmployeeFromBusiness.wsdl" namespace="http://www.example.org/FireEmployeeFromBusiness/"/>
+</definitions>
