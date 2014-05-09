@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="isEmployeeWorkingAtThisBusiness" targetNamespace="http://www.example.org/isEmployeeWorkingAtThisBusiness/" xmlns:pref1="http://www.example.org/Bool/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.example.org/isEmployeeWorkingAtThisBusiness/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:pref="http://www.example.org/DniAndBusiness/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.org/isEmployeeWorkingAtThisBusiness/">
+    	
+    	<xsd:import namespace="http://www.example.org/DniAndBusiness/" schemaLocation="DniIdAndBusinessId.xsd">
+    	</xsd:import>
+    	<xsd:import namespace="http://www.example.org/Bool/" schemaLocation="Bool.xsd"/>
+        </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="isEmployeeWorkingAtThisBusinessRequest">
+    <wsdl:part name="DniIdAndBusinessId" element="pref:DniIdAndBusinessId">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isEmployeeWorkingAtThisBusinessResponse">
+    <wsdl:part name="IsWorking" element="pref1:Bool">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="isEmployeeWorkingAtThisBusiness">
+    <wsdl:operation name="isEmployeeWorkingAtThisBusiness">
+      <wsdl:input message="tns:isEmployeeWorkingAtThisBusinessRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:isEmployeeWorkingAtThisBusinessResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="isEmployeeWorkingAtThisBusinessSOAP" type="tns:isEmployeeWorkingAtThisBusiness">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="isEmployeeWorkingAtThisBusiness">
+      <soap:operation soapAction="http://www.example.org/isEmployeeWorkingAtThisBusiness/isEmployeeWorkingAtThisBusiness"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="isEmployeeWorkingAtThisBusiness">
+    <wsdl:port name="isEmployeeWorkingAtThisBusinessSOAP" binding="tns:isEmployeeWorkingAtThisBusinessSOAP">
+      <soap:address location="http://www.odehost.com:8080/ode/processes/isEmployeeWorkingAtThisBusiness"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/Bool/"
+	targetNamespace="http://www.example.org/Bool/">
+	<complexType name="Bool">
+		<sequence>
+			<element name="bool" type="boolean"></element>
+		</sequence>
+	</complexType>
+
+
+    <element name="Bool" type="tns:Bool"></element>
+</schema>

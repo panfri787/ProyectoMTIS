@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- This file was auto-generated from WSDL --><!-- by the Apache Axis2 version: 1.6.2  Built on : Apr 17, 2012 (05:33:49 IST) --><serviceGroup>
+    <service name="isEmployeeWorkingAtThisBusiness">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="org.example.www.isemployeeworkingatthisbusiness.IsEmployeeWorkingAtThisBusinessMessageReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">org.example.www.isemployeeworkingatthisbusiness.IsEmployeeWorkingAtThisBusinessSkeleton</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="isEmployeeWorkingAtThisBusiness" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/isEmployeeWorkingAtThisBusiness/">
+            <actionMapping>http://www.example.org/isEmployeeWorkingAtThisBusiness/isEmployeeWorkingAtThisBusiness</actionMapping>
+            <outputActionMapping>http://www.example.org/isEmployeeWorkingAtThisBusiness/isEmployeeWorkingAtThisBusiness/isEmployeeWorkingAtThisBusinessResponse</outputActionMapping>
+        </operation>
+    </service>
+</serviceGroup>
