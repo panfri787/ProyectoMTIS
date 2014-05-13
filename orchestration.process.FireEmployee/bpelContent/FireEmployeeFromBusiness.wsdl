@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.example.org/FireEmployeeFromBusiness/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:pref="http://www.example.org/String/"
+	xmlns:pref1="http://www.example.org/IsOkAndFireEmployeeFromBusinessSate/"
+	name="FireEmployeeFromBusiness" targetNamespace="http://www.example.org/FireEmployeeFromBusiness/">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.example.org/FireEmployeeFromBusiness/">
+			<xsd:import schemaLocation="relocated/String.xsd"
+				namespace="http://www.example.org/String/">
+			</xsd:import>
+			<xsd:import
+				schemaLocation="relocated/IsOkAndFireEmployeeFromBusinessSate.xsd"
+				namespace="http://www.example.org/IsOkAndFireEmployeeFromBusinessSate/"></xsd:import>
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="FireEmployeeFromBusiness">
+		<wsdl:part element="pref:String" name="DNINumber" />
+	</wsdl:message>
+	<wsdl:message name="FireEmployeeFromBusinessResponse">
+		<wsdl:part element="pref1:IsOkAndFireEmployeeFromBusinessSate"
+			name="IsOkAndFireEmployeeFromBusinessSate" />
+	</wsdl:message>
+	
+	<wsdl:portType name="FireEmployeeFromBusiness">
+		<wsdl:operation name="FireEmployeeFromBusiness">
+			<wsdl:input message="tns:FireEmployeeFromBusiness" />
+			<wsdl:output message="tns:FireEmployeeFromBusinessResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="FireEmployeeFromBusinessSOAP"
+		type="tns:FireEmployeeFromBusiness">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="FireEmployeeFromBusiness">
+			<soap:operation
+				soapAction="http://www.example.org/FireEmployeeFromBusiness/FireEmployeeFromBusiness" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="FireEmployeeFromBusiness">
+		<wsdl:port binding="tns:FireEmployeeFromBusinessSOAP" name="FireEmployeeFromBusinessSOAP">
+			<soap:address location="http://www.odehost.com:8080/ode/processes/FireEmployeeFromBusiness" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

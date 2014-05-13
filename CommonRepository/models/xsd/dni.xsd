@@ -52,4 +52,6 @@
 			<element name="city" type="tns:city"></element>
 		</sequence>
 	</complexType>
+
+	<element name="Dni" type="tns:dni-complexTypes"></element>
 </schema>

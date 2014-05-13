@@ -33,8 +33,7 @@
 		<soap:binding style="document"
 			transport="http://schemas.xmlsoap.org/soap/http" />
 		<wsdl:operation name="FireEmployee">
-			<soap:operation
-				soapAction="http://www.example.org/FireEmployee/FireEmployee" />
+			<soap:operation soapAction="http://www.example.org/FireEmployee/FireEmployee" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>

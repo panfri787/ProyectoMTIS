@@ -1,2 +1,5 @@
+FireEmployee_ESB/target/*
+CommonRepository/target/*
+Empresa1/target/*
 business.task.isEmployeeWorkingAtThisBusiness/build/*
 mysql-models/*

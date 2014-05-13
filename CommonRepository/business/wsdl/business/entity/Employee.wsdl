@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.example.org/Employee/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pref="http://www.example.org/DniAndBusiness/"
+	xmlns:pref1="http://www.example.org/dni/" name="Employee"
+	targetNamespace="http://www.example.org/Employee/">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.example.org/Employee/">
+
+			<xsd:import schemaLocation="../../../../models/xsd/DniIdAndBusinessId.xsd"
+				namespace="http://www.example.org/DniAndBusiness/">
+			</xsd:import>
+
+			<xsd:import schemaLocation="../../../../models/xsd/Dni.xsd"
+				namespace="http://www.example.org/dni/"></xsd:import>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="Get">
+		<wsdl:part element="pref:DniIdAndBusinessId" name="DniIdAndBusinessId" />
+	</wsdl:message>
+	<wsdl:message name="GetResponse">
+		<wsdl:part element="pref1:Dni" name="Dni" />
+	</wsdl:message>
+	<wsdl:portType name="Employee">
+		<wsdl:operation name="Get">
+			<wsdl:input message="tns:Get" />
+			<wsdl:output message="tns:GetResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="Employee.SOAP" type="tns:Employee">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="Get">
+			<soap:operation soapAction="http://www.example.org/Employee/Get" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="Employee">
+		<wsdl:port binding="tns:Employee.SOAP" name="Employee.SOAP">
+			<soap:address location="http://www.example.org/" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

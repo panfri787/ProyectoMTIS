@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<definitions xmlns:tns="http://www.example.org/FireEmployee/" targetNamespace="http://www.example.org/FireEmployee/Artifacts" xmlns="http://schemas.xmlsoap.org/wsdl/">
+<definitions xmlns:tns="http://www.example.org/FireEmployee/" targetNamespace="http://www.example.org/FireEmployee/Artifacts" xmlns="http://schemas.xmlsoap.org/wsdl/"
+xmlns:pref="http://www.example.org/FireEmployeeFromBusiness/">
   <partnerLinkType name="FireEmployeePLT" xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
     <role name="FireEmployeeRole" portType="tns:FireEmployee"/>
   </partnerLinkType>
   <import location="FireEmployee.wsdl" namespace="http://www.example.org/FireEmployee/"/>
+  
+  <partnerLinkType name="FireEmployeeFromBusinessPLT" xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+    <role name="FireEmployeeFromBusinessRole" portType="pref:FireEmployeeFromBusiness"/>
+  </partnerLinkType>
+  <import location="FireEmployeeFromBusiness.wsdl" namespace="http://www.example.org/FireEmployeeFromBusiness/"/>
 </definitions>
