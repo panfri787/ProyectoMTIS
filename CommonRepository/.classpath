@@ -8,5 +8,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Axis2-1.6.2"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Apache-cxf-3.0.0-milestone2"/>
+	<classpathentry kind="lib" path="C:/xampp/tomcat/bin/tomcat-juli.jar"/>
 	<classpathentry kind="output" path="target/build/classes"/>
 </classpath>

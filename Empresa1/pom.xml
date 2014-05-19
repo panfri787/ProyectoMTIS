@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>ProuyectoMTIS</groupId>
+	<groupId>ProyectoMTIS</groupId>
 	<artifactId>Empresa1</artifactId>
 	<packaging>war</packaging>
 	<version>1.0</version>
@@ -119,6 +119,21 @@
 			<artifactId>axis2-adb</artifactId>
 			<version>${axis2-version}</version>
 		</dependency>
+
+		<!-- ACTIVE MQ DEPENDENCIES -->
+
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-all</artifactId>
+			<version>5.9.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-core</artifactId>
+			<version>5.2.0</version>
+		</dependency>
+
 
 	</dependencies>
 
