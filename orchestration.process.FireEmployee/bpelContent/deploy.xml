@@ -7,8 +7,8 @@
     <provide partnerLink="bpelProcessPartner">
       <service name="FireEmployee:FireEmployee" port="FireEmployeeSOAP"/>
     </provide>
-    <provide partnerLink="FireEmployeeFromBusinessPartner">
+    <invoke partnerLink="FireEmployeeFromBusinessPL">
       <service name="FireEmployeeFromBusiness:FireEmployeeFromBusiness" port="FireEmployeeFromBusinessSOAP"/>
-    </provide>
+    </invoke>
   </process>
 </deploy>

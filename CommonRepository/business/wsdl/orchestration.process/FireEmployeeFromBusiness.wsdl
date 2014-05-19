@@ -2,22 +2,24 @@
 <wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
 	xmlns:tns="http://www.example.org/FireEmployeeFromBusiness/"
 	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	xmlns:pref="http://www.example.org/String/"
 	xmlns:pref1="http://www.example.org/IsOkAndFireEmployeeFromBusinessSate/"
+	xmlns:pref2="http://www.example.org/DniAndBusiness/"
 	name="FireEmployeeFromBusiness" targetNamespace="http://www.example.org/FireEmployeeFromBusiness/">
 	<wsdl:types>
-		<xsd:schema targetNamespace="http://www.example.org/FireEmployeeFromBusiness/">
-			<xsd:import schemaLocation="../../../models/xsd/String.xsd"
-				namespace="http://www.example.org/String/">
-			</xsd:import>
+		<xsd:schema
+			targetNamespace="http://www.example.org/FireEmployeeFromBusiness/">
+
 			<xsd:import
 				schemaLocation="../../../models/xsd/IsOkAndFireEmployeeFromBusinessSate.xsd"
-				namespace="http://www.example.org/IsOkAndFireEmployeeFromBusinessSate/"></xsd:import>
+				namespace="http://www.example.org/IsOkAndFireEmployeeFromBusinessSate/">
+			</xsd:import>
+
+			<xsd:import schemaLocation="../../../models/xsd/DniIdAndBusinessId.xsd" namespace="http://www.example.org/DniAndBusiness/"></xsd:import>
 		</xsd:schema>
 	</wsdl:types>
 
 	<wsdl:message name="FireEmployeeFromBusiness">
-		<wsdl:part element="pref:String" name="DNINumber" />
+		<wsdl:part element="pref2:DniIdAndBusinessId" name="DniIdAndBusinessId" />
 	</wsdl:message>
 	<wsdl:message name="FireEmployeeFromBusinessResponse">
 		<wsdl:part element="pref1:IsOkAndFireEmployeeFromBusinessSate"
