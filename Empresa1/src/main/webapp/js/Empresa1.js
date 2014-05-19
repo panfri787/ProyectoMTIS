@@ -98,7 +98,7 @@ Empresa1 = function Empresa1() {
 	this.fireEmployee = function fireEmployee(DNInumber) {
 
 		var data = {
-			dniNumber : DNInumber,
+			dniId : DNInumber,
 			businessId : this.businessId
 		};
 
@@ -113,7 +113,7 @@ Empresa1 = function Empresa1() {
 			type : 'POST',
 			dataType : 'json',
 			data : {
-				url : 'http://localhost:8081/FireEmployee',
+				url : 'http://localhost:8081/FireEmployee2',
 				data : data
 			},
 		}).done(this.onAjaxSuccess).fail(this.onAjaxError).always(function() {
