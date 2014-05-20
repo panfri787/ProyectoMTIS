@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<definitions xmlns:tns="http://www.example.org/FireEmployee/" targetNamespace="http://www.example.org/FireEmployee/Artifacts" xmlns="http://schemas.xmlsoap.org/wsdl/"
-xmlns:pref="http://www.example.org/FireEmployeeFromBusiness/">
-  <partnerLinkType name="FireEmployeePLT" xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:pref="http://www.example.org/FireEmployeeFromBusiness/" xmlns:tns="http://www.example.org/FireEmployee/" xmlns:tns2="http://www.example.org/FireEmployee/Artifacts" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" targetNamespace="http://www.example.org/FireEmployee/Artifacts">
+  <partnerLinkType xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype" name="FireEmployeePLT">
     <role name="FireEmployeeRole" portType="tns:FireEmployee"/>
   </partnerLinkType>
-  <import location="FireEmployee.wsdl" namespace="http://www.example.org/FireEmployee/"/>
-  
-  <partnerLinkType name="FireEmployeeFromBusinessPLT" xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+    <partnerLinkType name="FireEmployeeFromBusinessPLT" xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
     <role name="FireEmployeeFromBusinessRole" portType="pref:FireEmployeeFromBusiness"/>
+    <role name="FireEmployeeFromBusinessPLT" portType="pref:FireEmployeeFromBusiness"/>
   </partnerLinkType>
-  <import location="FireEmployeeFromBusiness.wsdl" namespace="http://www.example.org/FireEmployeeFromBusiness/"/>
+  
+    <import location="FireEmployee.wsdl" namespace="http://www.example.org/FireEmployee/"/>
+    <import location="FireEmployeeFromBusiness.wsdl" namespace="http://www.example.org/FireEmployeeFromBusiness/"/>
 </definitions>
