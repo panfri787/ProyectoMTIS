@@ -1,5 +1,5 @@
 
-package proyectomtis.ws.soap.fireemployee;
+package proyectomtis.ws.soap.fireemployeebusiness;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
@@ -10,7 +10,7 @@ import javax.xml.namespace.QName;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the proyectomtis.ws.soap.fireemployee package. 
+ * generated in the proyectomtis.ws.soap.fireemployeebusiness package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -29,7 +29,7 @@ public class ObjectFactory {
     private final static QName _FireEmployeeReport_QNAME = new QName("http://www.example.org/FireEmployeeReport/", "FireEmployeeReport");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: proyectomtis.ws.soap.fireemployee
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: proyectomtis.ws.soap.fireemployeebusiness
      * 
      */
     public ObjectFactory() {

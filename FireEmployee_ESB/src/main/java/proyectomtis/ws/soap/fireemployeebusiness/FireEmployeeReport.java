@@ -1,5 +1,5 @@
 
-package proyectomtis.ws.soap.fireemployee;
+package proyectomtis.ws.soap.fireemployeebusiness;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

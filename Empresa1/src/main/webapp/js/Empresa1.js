@@ -113,7 +113,7 @@ Empresa1 = function Empresa1() {
 			type : 'POST',
 			dataType : 'json',
 			data : {
-				url : 'http://localhost:8081/FireEmployee2',
+				url : 'http://localhost:8081/FireEmployee',
 				data : data
 			},
 		}).done(this.onAjaxSuccess).fail(this.onAjaxError).always(function() {
