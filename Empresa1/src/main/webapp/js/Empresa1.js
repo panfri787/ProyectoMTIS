@@ -88,7 +88,8 @@ Empresa1 = function Empresa1() {
 						+ '</td><td>'
 						+ employeeName
 						+ '</td><td>blablabla</td><td><button class="btn btn-danger" onclick="javascript:empresa1.fireEmployee('
-						+ employeeDNI + ')">Despedir</button></td></tr>';
+						+ employeeDNI + ')">Despedir</button><button class="btn btn-danger" onclick="javascript:empresa1.fireEmployeeJms('
+						+ employeeDNI + ')">DespedirJMS</button></td></tr>';
 			}
 		}
 
@@ -106,6 +107,18 @@ Empresa1 = function Empresa1() {
 
 		this.fireEmployeeAJAX(dataJSON);
 	};
+	
+	this.fireEmployeeJms = function fireEmployeeJms(DNInumber) {
+
+		var data = {
+			dniNumber : DNInumber,
+			businessId : this.businessId
+		};
+
+		var dataJSON = JSON.stringify(data);
+
+		this.fireEmployeeJmsAJAX(dataJSON);
+	};
 
 	this.fireEmployeeAJAX = function fireEmployeeAJAX(data) {
 		$.ajax({
@@ -118,6 +131,18 @@ Empresa1 = function Empresa1() {
 			},
 		}).done(this.onAjaxSuccess).fail(this.onAjaxError).always(function() {
 			console.log("fireEmployeeAJAX() - Complete");
+		});
+	};
+	
+	this.fireEmployeeJmsAJAX = function fireEmployeeJmsAJAX(data) {
+		$.ajax({
+			url : 'api/fireEmployeeJMS',
+			type : 'POST',
+			dataType : 'json',
+			contentType: 'application/json',
+			data : data,
+		}).done(this.onAjaxSuccess).fail(this.onAjaxError).always(function() {
+			console.log("fireEmployeeJmsAJAX() - Complete");
 		});
 	};
 

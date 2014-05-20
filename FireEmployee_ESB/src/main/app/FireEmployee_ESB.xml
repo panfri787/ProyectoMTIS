@@ -25,8 +25,9 @@ http://www.mulesoft.org/schema/mule/jms http://www.mulesoft.org/schema/mule/jms/
 
         <json:json-to-object-transformer doc:name="JSON to Object" encoding="UTF-8" returnClass="esb.FireEmployeeRequestParameters"/>
         <component class="esb.CallFireEmployeeBPEL_SOAP" doc:name="Java"/>
-        <echo-component doc:name="Echo"/>
         <logger level="INFO" doc:name="Logger"/>
+
         <json:object-to-json-transformer doc:name="Object to JSON"/>
+        <logger level="INFO" doc:name="Logger" message="#[message.payload]"/>
     </flow>
 </mule>

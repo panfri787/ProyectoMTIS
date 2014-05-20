@@ -31,7 +31,7 @@ import proyectomtis.persistance.EmployeeDAO;
  * Example resource class hosted at the URI path "/myresource"
  */
 @Path("/fireEmployeeJMS")
-@Consumes("application/json")
+
 public class FireEmployeeJmsResource {
 	
 	@XmlRootElement
@@ -53,7 +53,8 @@ public class FireEmployeeJmsResource {
 @POST	
 public Response post(final MyJaxBean input) throws JMSException {
 
-		
+		System.out.println("LLEGO AQUI");
+		System.out.println("input:" + input.businessId);
 		// URL of the JMS server.
 				String url = "tcp://localhost:61616";
 				// Name of the topic we will be sending messages to
@@ -92,7 +93,7 @@ public Response post(final MyJaxBean input) throws JMSException {
 		} else {
 			response = Response.status(404).entity(error).type("text/plain").build();
 		}
-		
+		//System.out.println("Esto es el JSON:" + JSON);
 		TextMessage message = session.createTextMessage("" + JSON);
 		producer.send(message);
 		connection.close();
