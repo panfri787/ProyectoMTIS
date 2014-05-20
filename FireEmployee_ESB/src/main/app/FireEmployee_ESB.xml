@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:jms="http://www.mulesoft.org/schema/mule/jms" 
+<mule xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" 
 	xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns="http://www.mulesoft.org/schema/mule/core"
 	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
 	xmlns:spring="http://www.springframework.org/schema/beans" xmlns:core="http://www.mulesoft.org/schema/mule/core"
@@ -9,25 +9,29 @@
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/jms http://www.mulesoft.org/schema/mule/jms/current/mule-jms.xsd">
-    <jms:activemq-connector name="Active_MQ" brokerURL="tcp://localhost:61616" validateConnections="true" doc:name="Active MQ"/>
-    <flow name="FireEmployee_ESBFlow" doc:name="FireEmployee_ESBFlow">
-        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" path="FireEmployee" doc:name="HTTP"/>
+http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
+http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd">
+    <flow name="FireEmployee_ESBFlowDeprecated" doc:name="FireEmployee_ESBFlowDeprecated">
+        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" path="FireEmployee2" doc:name="HTTP"/>
         <json:json-to-object-transformer doc:name="JSON to Object" encoding="UTF-8" returnClass="esb.FireEmployeeRequestParameters"/>
         <component class="esb.CallFireEmployeeBPEL_SOAP" doc:name="Java"/>
         <echo-component doc:name="Echo"/>
         <logger level="INFO" doc:name="Logger"/>
         <json:object-to-json-transformer doc:name="Object to JSON"/>
     </flow>
-    
-    <flow name="FireEmployee_ESBFlow2$" doc:name="FireEmployee_ESBFlow2$">
-        <jms:inbound-endpoint topic="prueba" connector-ref="Active_MQ" doc:name="JMS"/>
-
-        <json:json-to-object-transformer doc:name="JSON to Object" encoding="UTF-8" returnClass="esb.FireEmployeeRequestParameters"/>
-        <component class="esb.CallFireEmployeeBPEL_SOAP" doc:name="Java"/>
-        <logger level="INFO" doc:name="Logger"/>
+    <flow name="FireEmployee_ESBFlow2" doc:name="FireEmployee_ESBFlow2">
+        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" path="FireEmployee" doc:name="HTTP"/>
+        <flow-ref name="invokeFireEmployee" doc:name="Flow Reference"/>
+        <logger message="dni fired is #[payload.fireEmployeeReport.dniId]" level="INFO" doc:name="Logger"/>
 
         <json:object-to-json-transformer doc:name="Object to JSON"/>
-        <logger level="INFO" doc:name="Logger" message="#[message.payload]"/>
+
     </flow>
+    <sub-flow name="invokeFireEmployee" doc:name="invokeFireEmployee">
+        <json:json-to-object-transformer returnClass="proyectomtis.ws.soap.fireemployeebusiness.DniIdAndBusinessId" encoding="UTF-8" doc:name="JSON to Object"/>
+        <logger message="Dni to fire is #[payload.dniId]" level="INFO" doc:name="Logger"/>
+        <cxf:jaxws-client operation="FireEmployee" clientClass="proyectomtis.ws.soap.fireemployeebusiness.FireEmployee" port="FireEmployeeSOAP" doc:name="SOAP"/>
+        <http:outbound-endpoint exchange-pattern="request-response" method="POST" address="http://www.odehost.com:8080/ode/processes/FireEmployee.FireEmployeeSOAP/" doc:name="HTTP"/>
+    </sub-flow>
+
 </mule>
