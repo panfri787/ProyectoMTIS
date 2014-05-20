@@ -111,7 +111,7 @@ Empresa1 = function Empresa1() {
 	this.fireEmployeeJms = function fireEmployeeJms(DNInumber) {
 
 		var data = {
-			dniNumber : DNInumber,
+			dniId : DNInumber,
 			businessId : this.businessId
 		};
 

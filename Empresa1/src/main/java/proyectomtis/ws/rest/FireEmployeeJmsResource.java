@@ -36,7 +36,7 @@ public class FireEmployeeJmsResource {
 	
 	@XmlRootElement
 	public static class MyJaxBean{
-	    @XmlElement public String dniNumber;
+	    @XmlElement public String dniId;
 	    @XmlElement public String businessId;
 	}
 
@@ -55,6 +55,7 @@ public Response post(final MyJaxBean input) throws JMSException {
 
 		System.out.println("LLEGO AQUI");
 		System.out.println("input:" + input.businessId);
+		System.out.println("input:" + input.dniId);
 		// URL of the JMS server.
 				String url = "tcp://localhost:61616";
 				// Name of the topic we will be sending messages to

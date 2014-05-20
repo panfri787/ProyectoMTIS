@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" 
+<mule xmlns:jms="http://www.mulesoft.org/schema/mule/jms" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" 
 	xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns="http://www.mulesoft.org/schema/mule/core"
 	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
 	xmlns:spring="http://www.springframework.org/schema/beans" xmlns:core="http://www.mulesoft.org/schema/mule/core"
@@ -10,7 +10,9 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
-http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd">
+http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
+http://www.mulesoft.org/schema/mule/jms http://www.mulesoft.org/schema/mule/jms/current/mule-jms.xsd">
+    <jms:activemq-connector name="Active_MQ" brokerURL="tcp://localhost:61616" validateConnections="true" doc:name="Active MQ"/>
     <flow name="FireEmployee_ESBFlowDeprecated" doc:name="FireEmployee_ESBFlowDeprecated">
         <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" path="FireEmployee2" doc:name="HTTP"/>
         <json:json-to-object-transformer doc:name="JSON to Object" encoding="UTF-8" returnClass="esb.FireEmployeeRequestParameters"/>
@@ -26,6 +28,12 @@ http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/
 
         <json:object-to-json-transformer doc:name="Object to JSON"/>
 
+    </flow>
+    <flow name="FireEmployee_ESBFlowJms" doc:name="FireEmployee_ESBFlowJms">
+        <jms:inbound-endpoint topic="prueba" connector-ref="Active_MQ" doc:name="JMS"/>
+        <flow-ref name="invokeFireEmployee" doc:name="Flow Reference"/>
+        <logger message="#[message.payload]" level="INFO" doc:name="Logger"/>
+        <json:object-to-json-transformer doc:name="Object to JSON"/>
     </flow>
     <sub-flow name="invokeFireEmployee" doc:name="invokeFireEmployee">
         <json:json-to-object-transformer returnClass="proyectomtis.ws.soap.fireemployeebusiness.DniIdAndBusinessId" encoding="UTF-8" doc:name="JSON to Object"/>
