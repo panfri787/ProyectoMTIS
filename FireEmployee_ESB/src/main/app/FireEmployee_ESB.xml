@@ -22,7 +22,7 @@ http://www.mulesoft.org/schema/mule/jms http://www.mulesoft.org/schema/mule/jms/
         <json:object-to-json-transformer doc:name="Object to JSON"/>
     </flow>
     <flow name="FireEmployee_ESBFlow2" doc:name="FireEmployee_ESBFlow2">
-        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" path="FireEmployee" doc:name="HTTP"/>
+        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" path="FireEmployee" doc:name="HTTP" responseTimeout="120000"/>
         <flow-ref name="invokeFireEmployee" doc:name="Flow Reference"/>
         <logger message="dni fired is #[payload.fireEmployeeReport.dniId]" level="INFO" doc:name="Logger"/>
 
@@ -30,16 +30,17 @@ http://www.mulesoft.org/schema/mule/jms http://www.mulesoft.org/schema/mule/jms/
 
     </flow>
     <flow name="FireEmployee_ESBFlowJms" doc:name="FireEmployee_ESBFlowJms">
-        <jms:inbound-endpoint topic="prueba" connector-ref="Active_MQ" doc:name="JMS"/>
+        <jms:inbound-endpoint topic="fireEmployee" connector-ref="Active_MQ" doc:name="JMS" />
         <flow-ref name="invokeFireEmployee" doc:name="Flow Reference"/>
         <logger message="#[message.payload]" level="INFO" doc:name="Logger"/>
         <json:object-to-json-transformer doc:name="Object to JSON"/>
+        <jms:outbound-endpoint topic="fireEmployeeReport" responseTimeout="120000" connector-ref="Active_MQ" doc:name="JMS"/>
     </flow>
     <sub-flow name="invokeFireEmployee" doc:name="invokeFireEmployee">
         <json:json-to-object-transformer returnClass="proyectomtis.ws.soap.fireemployeebusiness.DniIdAndBusinessId" encoding="UTF-8" doc:name="JSON to Object"/>
         <logger message="Dni to fire is #[payload.dniId]" level="INFO" doc:name="Logger"/>
         <cxf:jaxws-client operation="FireEmployee" clientClass="proyectomtis.ws.soap.fireemployeebusiness.FireEmployee" port="FireEmployeeSOAP" doc:name="SOAP"/>
-        <http:outbound-endpoint exchange-pattern="request-response" method="POST" address="http://www.odehost.com:8080/ode/processes/FireEmployee.FireEmployeeSOAP/" doc:name="HTTP"/>
+        <http:outbound-endpoint exchange-pattern="request-response" method="POST" address="http://www.odehost.com:8080/ode/processes/FireEmployee.FireEmployeeSOAP/" doc:name="HTTP" responseTimeout="120000"/>
     </sub-flow>
 
 </mule>

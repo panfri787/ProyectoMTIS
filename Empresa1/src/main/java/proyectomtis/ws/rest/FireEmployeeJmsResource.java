@@ -59,7 +59,7 @@ public Response post(final MyJaxBean input) throws JMSException {
 		// URL of the JMS server.
 				String url = "tcp://localhost:61616";
 				// Name of the topic we will be sending messages to
-			    String subject = "prueba";
+			    String subject = "fireEmployee";
 			    
 			    // Getting JMS connection from the server and starting it
 		        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(url);

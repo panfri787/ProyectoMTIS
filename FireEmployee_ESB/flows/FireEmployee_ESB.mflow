@@ -1,58 +1,47 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="FireEmployee_ESB">
-    <global-element name="Active MQ" type="http://www.mulesoft.org/schema/mule/jms/activemq-xa-connector" entity-id="!!!002189a4-ef28-4e22-ade1-49a80753f80c">
+    <global-element name="Active MQ" type="org.mule.tooling.ui.modules.core.global.activemq.config" entity-id="Active MQ#1">
         <properties>
-            <property name="jndiProviderUrl" value=""/>
-            <property name="redeliveryHandlerFactory-ref" value=""/>
-            <property name="embeddedMode" value="false"/>
-            <property name="durable" value="false"/>
-            <property name="connectionFactory-ref" value=""/>
-            <property name="maxRedelivery" value="-1"/>
-            <property name="password" value=""/>
-            <property name="username" value=""/>
+            <property name="jndiProviderUrl"/>
+            <property name="embeddedMode"/>
+            <property name="redeliveryHandlerFactory-ref"/>
+            <property name="connectionFactory-ref"/>
+            <property name="maxRedelivery"/>
+            <property name="durable"/>
+            <property name="password"/>
+            <property name="username"/>
             <property name="name" value="Active_MQ"/>
-            <property name="dynamicNotification" value="false"/>
-            <property name="noLocal" value="false"/>
-            <property name="eagerConsumer" value="false"/>
-            <property name="numberOfConsumers" value="1"/>
-            <property name="acknowledgementMode" value="AUTO_ACKNOWLEDGE"/>
-            <property name="jndiInitialFactory" value=""/>
+            <property name="dynamicNotification"/>
+            <property name="noLocal"/>
+            <property name="auxiliary;index" value="1"/>
+            <property name="eagerConsumer"/>
+            <property name="numberOfConsumers"/>
+            <property name="acknowledgementMode"/>
+            <property name="jndiInitialFactory"/>
             <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/jms/activemq-connector"/>
             <property name="validateConnections" value="true"/>
-            <property name="disableTemporaryReplyToDestinations" value="false"/>
-            <property name="clientId" value=""/>
-            <property name="dispatcherPoolFactory-ref" value=""/>
-            <property name="persistentDelivery" value="false"/>
-            <property name="forceJndiDestinations" value="false"/>
-            <property name="specification" value="1.0.2b"/>
+            <property name="disableTemporaryReplyToDestinations"/>
+            <property name="clientId"/>
+            <property name="dispatcherPoolFactory-ref"/>
+            <property name="persistentDelivery"/>
+            <property name="forceJndiDestinations"/>
+            <property name="connectionFactoryJndiName"/>
             <property name="brokerURL" value="tcp://localhost:61616"/>
-            <property name="connectionFactoryJndiName" value=""/>
-            <property name="jndiDestinations" value="false"/>
-            <property name="honorQosHeaders" value="false"/>
-            <property name="cacheJmsSessions" value="false"/>
-            <property name="jndiProviderProperties-ref" value=""/>
-            <property-collection name="">
-                <property name="blocking" value="true"/>
-                <property name="d" value=""/>
-                <property name="customReconnection" value="false"/>
-                <property name="count" value="2"/>
-                <property name="standardReconnection" value="false"/>
-                <property name="class" value=""/>
-                <property name="frequency" value="2000"/>
-                <property name="reconnectForever" value="false"/>
-                <property name="noReconnection" value="true"/>
-            </property-collection>
+            <property name="specification"/>
+            <property name="jndiDestinations"/>
+            <property name="honorQosHeaders"/>
+            <property name="cacheJmsSessions"/>
+            <property name="jndiProviderProperties-ref"/>
         </properties>
-        <description></description>
     </global-element>
-    <flow SubFlow="false" name="FireEmployee_ESBFlowDeprecated" type="http://www.mulesoft.org/schema/mule/core/flow" entity-id="cc748923-48be-48f2-9c26-b2a18d1b8ad0">
+    <flow SubFlow="false" name="FireEmployee_ESBFlowDeprecated" type="http://www.mulesoft.org/schema/mule/core/flow" entity-id="2e3fa15c-db01-4c0d-80f7-283bdfda45ca">
         <properties>
             <property name="initialState"/>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
-            <property name="auxiliary;index" value="1"/>
+            <property name="auxiliary;index" value="2"/>
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#1">
             <graphicalData x="0" y="0" width="0" height="0"/>
@@ -79,7 +68,7 @@
                     <property name="responseTransformer-refs"/>
                     <property name="method"/>
                     <property name="user"/>
-                    <property name="auxiliary;index" value="2"/>
+                    <property name="auxiliary;index" value="3"/>
                     <property name="responseTimeout"/>
                     <property name="mimeType"/>
                     <property name="connector-ref"/>
@@ -92,7 +81,7 @@
                     <property name="ignoreBadInput"/>
                     <property name="encoding" value="UTF-8"/>
                     <property name="mapper-ref"/>
-                    <property name="auxiliary;index" value="3"/>
+                    <property name="auxiliary;index" value="4"/>
                     <property name="mimeType"/>
                 </properties>
             </pattern>
@@ -100,13 +89,13 @@
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="class" value="esb.CallFireEmployeeBPEL_SOAP"/>
-                    <property name="auxiliary;index" value="4"/>
+                    <property name="auxiliary;index" value="5"/>
                 </properties>
             </pattern>
             <pattern name="Echo" type="org.mule.tooling.ui.modules.core.pattern.echo" entity-id="Echo#1">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="auxiliary;index" value="5"/>
+                    <property name="auxiliary;index" value="6"/>
                 </properties>
             </pattern>
             <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#1">
@@ -115,7 +104,7 @@
                     <property name="message"/>
                     <property name="category"/>
                     <property name="level" value="INFO"/>
-                    <property name="auxiliary;index" value="6"/>
+                    <property name="auxiliary;index" value="7"/>
                 </properties>
             </pattern>
             <pattern name="Object to JSON" type="http://www.mulesoft.org/schema/mule/json/object-to-json-transformer" entity-id="Object to JSON#1">
@@ -126,20 +115,20 @@
                     <property name="ignoreBadInput"/>
                     <property name="encoding"/>
                     <property name="mapper-ref"/>
-                    <property name="auxiliary;index" value="7"/>
+                    <property name="auxiliary;index" value="8"/>
                     <property name="mimeType"/>
                 </properties>
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="FireEmployee_ESBFlow2" type="http://www.mulesoft.org/schema/mule/core/flow" entity-id="c588d7fe-10bf-4850-9d8c-a53399c0a8af">
+    <flow SubFlow="false" name="FireEmployee_ESBFlow2" type="http://www.mulesoft.org/schema/mule/core/flow" entity-id="c7a4032d-7684-4908-98d9-e8b6158b33f8">
         <properties>
             <property name="initialState"/>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
-            <property name="auxiliary;index" value="8"/>
+            <property name="auxiliary;index" value="9"/>
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#2">
             <graphicalData x="0" y="0" width="0" height="0"/>
@@ -166,8 +155,8 @@
                     <property name="responseTransformer-refs"/>
                     <property name="method"/>
                     <property name="user"/>
-                    <property name="auxiliary;index" value="9"/>
-                    <property name="responseTimeout"/>
+                    <property name="auxiliary;index" value="10"/>
+                    <property name="responseTimeout" value="120000"/>
                     <property name="mimeType"/>
                     <property name="connector-ref"/>
                 </properties>
@@ -176,7 +165,7 @@
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="name" value="invokeFireEmployee"/>
-                    <property name="auxiliary;index" value="10"/>
+                    <property name="auxiliary;index" value="11"/>
                 </properties>
             </pattern>
             <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#2">
@@ -185,7 +174,7 @@
                     <property name="message" value="dni fired is #[payload.fireEmployeeReport.dniId]"/>
                     <property name="category"/>
                     <property name="level" value="INFO"/>
-                    <property name="auxiliary;index" value="11"/>
+                    <property name="auxiliary;index" value="12"/>
                 </properties>
             </pattern>
             <pattern name="Object to JSON" type="http://www.mulesoft.org/schema/mule/json/object-to-json-transformer" entity-id="Object to JSON#2">
@@ -196,28 +185,28 @@
                     <property name="ignoreBadInput"/>
                     <property name="encoding"/>
                     <property name="mapper-ref"/>
-                    <property name="auxiliary;index" value="12"/>
+                    <property name="auxiliary;index" value="13"/>
                     <property name="mimeType"/>
                 </properties>
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="FireEmployee_ESBFlowJms" type="http://www.mulesoft.org/schema/mule/core/flow" entity-id="28df4d40-1534-430c-b6b9-8e3c301f7db3">
+    <flow SubFlow="false" name="FireEmployee_ESBFlowJms" type="http://www.mulesoft.org/schema/mule/core/flow" entity-id="f1034e13-7a64-448f-a046-fefd4c963fcd">
         <properties>
             <property name="initialState"/>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
-            <property name="auxiliary;index" value="13"/>
+            <property name="auxiliary;index" value="14"/>
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#3">
             <graphicalData x="0" y="0" width="0" height="0"/>
-            <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="JMS" type="http://www.mulesoft.org/schema/mule/jms/endpoint" entity-id="3ac35ab9-6444-45b0-9823-d5ace8e51929">
-                <graphicalData x="0" y="0" width="0" height="0"/>
+            <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="JMS" type="http://www.mulesoft.org/schema/mule/jms/endpoint" entity-id="JMS#1">
+                <graphicalData x="21" y="509" width="68" height="69"/>
                 <properties>
                     <property name="auxiliary;erased;mimeType" value="true"/>
-                    <property name="topic" value="prueba"/>
+                    <property name="topic" value="fireEmployee"/>
                     <property name="durableName" value=""/>
                     <property name="disableTransportTransformer" value="false"/>
                     <property name="disableTemporaryReplyToDestinations" value="false"/>
@@ -229,43 +218,72 @@
                     <property name="auxiliary;erased;encoding" value="true"/>
                     <property name="encoding" value=""/>
                     <property name="responseTransformer-refs" value=""/>
+                    <property name="auxiliary;index" value="15"/>
                     <property name="mimeType" value=""/>
                     <property name="responseTimeout" value="10000"/>
                     <property name="connector-ref" value="Active_MQ"/>
                 </properties>
                 <description></description>
             </endpoint>
-            <pattern name="Flow Reference" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="c6b8781e-2de0-4a9f-b2aa-df3bcbb2fded">
-                <graphicalData x="0" y="0" width="0" height="0"/>
+            <pattern name="Flow Reference" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#2">
+                <graphicalData x="149" y="509" width="94" height="69"/>
                 <properties>
-                    <property name="updated"/>
                     <property name="name" value="invokeFireEmployee"/>
+                    <property name="auxiliary;index" value="16"/>
                 </properties>
-                <description></description>
             </pattern>
-            <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="11a9480f-d80c-4906-8dbf-4ad0022ab414">
-                <graphicalData x="0" y="0" width="0" height="0"/>
+            <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#3">
+                <graphicalData x="303" y="509" width="68" height="69"/>
                 <properties>
                     <property name="message" value="#[message.payload]"/>
-                    <property name="category" value=""/>
+                    <property name="category"/>
                     <property name="level" value="INFO"/>
+                    <property name="auxiliary;index" value="17"/>
+                </properties>
+            </pattern>
+            <pattern name="Object to JSON" type="http://www.mulesoft.org/schema/mule/json/object-to-json-transformer" entity-id="Object to JSON#3">
+                <graphicalData x="431" y="509" width="94" height="69"/>
+                <properties>
+                    <property name="sourceClass"/>
+                    <property name="returnClass"/>
+                    <property name="ignoreBadInput"/>
+                    <property name="encoding"/>
+                    <property name="mapper-ref"/>
+                    <property name="auxiliary;index" value="18"/>
+                    <property name="mimeType"/>
+                </properties>
+            </pattern>
+            <endpoint direction="Outbound" message-exchange-pattern="OneWay" name="JMS" type="http://www.mulesoft.org/schema/mule/jms/endpoint" entity-id="dc460824-26ef-4c3a-b4ff-76ef6067aaed">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="auxiliary;erased;mimeType" value="true"/>
+                    <property name="topic" value="fireEmployeeReport"/>
+                    <property name="disableTransportTransformer" value="false"/>
+                    <property name="disableTemporaryReplyToDestinations" value="false"/>
+                    <property name="exchange-pattern" value="one-way"/>
+                    <property name="ref" value=""/>
+                    <property name="transformer-refs" value=""/>
                     <property name="updated"/>
+                    <property name="address" value=""/>
+                    <property name="auxiliary;erased;encoding" value="true"/>
+                    <property name="encoding" value=""/>
+                    <property name="responseTransformer-refs" value=""/>
+                    <property name="responseTimeout" value="120000"/>
+                    <property name="mimeType" value=""/>
+                    <property name="connector-ref" value="Active_MQ"/>
                 </properties>
                 <description></description>
-            </pattern>
-            <pattern name="Object to JSON" type="http://www.mulesoft.org/schema/mule/json/object-to-json-transformer" entity-id="02234c31-1c7a-4d32-b4d4-de680c55ed7d">
-                <graphicalData x="0" y="0" width="0" height="0"/>
-            </pattern>
+            </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="true" name="invokeFireEmployee" type="http://www.mulesoft.org/schema/mule/core/subflow" entity-id="9a8d4aa8-b962-4f3d-897b-106da3f8ec40">
+    <flow SubFlow="true" name="invokeFireEmployee" type="http://www.mulesoft.org/schema/mule/core/subflow" entity-id="5ac886ae-3ec9-4e3a-974a-fb33576753aa">
         <properties>
             <property name="initialState"/>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
-            <property name="auxiliary;index" value="14"/>
+            <property name="auxiliary;index" value="19"/>
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#4">
             <graphicalData x="0" y="0" width="0" height="0"/>
@@ -276,18 +294,17 @@
                     <property name="ignoreBadInput"/>
                     <property name="encoding" value="UTF-8"/>
                     <property name="mapper-ref"/>
-                    <property name="auxiliary;index" value="15"/>
+                    <property name="auxiliary;index" value="20"/>
                     <property name="mimeType"/>
                 </properties>
-                <description></description>
             </pattern>
-            <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#3">
+            <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#4">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="message" value="Dni to fire is #[payload.dniId]"/>
                     <property name="category"/>
                     <property name="level" value="INFO"/>
-                    <property name="auxiliary;index" value="16"/>
+                    <property name="auxiliary;index" value="21"/>
                 </properties>
             </pattern>
             <pattern name="SOAP" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#1">
@@ -303,7 +320,7 @@
                     <property name="enableMuleSoapHeaders"/>
                     <property name="configuration-ref"/>
                     <property name="clientClass" value="proyectomtis.ws.soap.fireemployeebusiness.FireEmployee"/>
-                    <property name="auxiliary;index" value="17"/>
+                    <property name="auxiliary;index" value="22"/>
                     <property name="decoupledEndpoint"/>
                 </properties>
             </pattern>
@@ -330,8 +347,8 @@
                     <property name="responseTransformer-refs"/>
                     <property name="method" value="POST"/>
                     <property name="user"/>
-                    <property name="auxiliary;index" value="18"/>
-                    <property name="responseTimeout"/>
+                    <property name="auxiliary;index" value="23"/>
+                    <property name="responseTimeout" value="120000"/>
                     <property name="mimeType"/>
                     <property name="connector-ref"/>
                 </properties>
