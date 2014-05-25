@@ -36,17 +36,20 @@
       <wsdl:output message="tns:isEmployeeWorkingAtThisBusinessResponse"/>
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="isEmployeeWorkingAtThisBusinessSOAP" type="tns:isEmployeeWorkingAtThisBusiness">
-    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-    <wsdl:operation name="isEmployeeWorkingAtThisBusiness">
-      <soap:operation soapAction="http://www.example.org/isEmployeeWorkingAtThisBusiness/isEmployeeWorkingAtThisBusiness"/>
-      <wsdl:input>
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
+  <wsdl:binding name="isEmployeeWorkingAtThisBusinessSOAP"
+  	type="tns:isEmployeeWorkingAtThisBusiness">
+  	<soap:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+  	<wsdl:operation name="isEmployeeWorkingAtThisBusiness">
+  		<soap:operation
+  			soapAction="http://www.example.org/isEmployeeWorkingAtThisBusiness/isEmployeeWorkingAtThisBusiness" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="isEmployeeWorkingAtThisBusiness">
     <wsdl:port binding="tns:isEmployeeWorkingAtThisBusinessSOAP" name="isEmployeeWorkingAtThisBusinessSOAP">
