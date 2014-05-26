@@ -19,6 +19,9 @@ Empresa1 = function Empresa1() {
 		_.bindAll(this, "fireEmployee");
 		_.bindAll(this, "fireEmployeeAJAX");
 
+		_.bindAll(this, "fireEmployeeRestXML");
+		_.bindAll(this, "fireEmployeeAJAXXML");
+
 		_.bindAll(this, "onAjaxError");
 		_.bindAll(this, "onAjaxSuccess");
 
@@ -54,8 +57,10 @@ Empresa1 = function Empresa1() {
 	};
 
 	this.onAjaxError = function onAjaxError(xhr, status, error) {
-		console.log("Empresa1.onAjaxError(xhr %O, status %O, error %O) xhr.responseText %O", xhr,
-				status, error, xhr.responseText);
+		console
+				.log(
+						"Empresa1.onAjaxError(xhr %O, status %O, error %O) xhr.responseText %O",
+						xhr, status, error, xhr.responseText);
 	};
 
 	this.onAjaxSuccess = function onAjaxSuccess(data, status, xhr) {
@@ -88,7 +93,9 @@ Empresa1 = function Empresa1() {
 						+ '</td><td>'
 						+ employeeName
 						+ '</td><td>blablabla</td><td><button class="btn btn-danger" onclick="javascript:empresa1.fireEmployee('
-						+ employeeDNI + ')">Despedir</button></td></tr>';
+						+ employeeDNI
+						+ ')">REST-JSON</button><button class="btn btn-danger" onclick="javascript:empresa1.fireEmployeeRestXML('
+						+ employeeDNI + ')">REST-XML</button></td></tr>';
 			}
 		}
 
@@ -97,6 +104,7 @@ Empresa1 = function Empresa1() {
 
 	this.fireEmployee = function fireEmployee(DNInumber) {
 
+		console.log("Empresa1.fireEmployee(DNInumber %O)", DNInumber);
 		var data = {
 			dniId : DNInumber,
 			businessId : this.businessId
@@ -108,17 +116,47 @@ Empresa1 = function Empresa1() {
 	};
 
 	this.fireEmployeeAJAX = function fireEmployeeAJAX(data) {
+		var proxyData = {
+			url : 'http://localhost:8081/FireEmployee',
+			data : data,
+			contentType : 'application/json',
+		};
+
 		$.ajax({
 			url : 'ProxyServlet',
 			type : 'POST',
 			dataType : 'json',
-			data : {
-				url : 'http://localhost:8081/FireEmployee',
-				data : data
-			},
+			data : proxyData,
 		}).done(this.onAjaxSuccess).fail(this.onAjaxError).always(function() {
 			console.log("fireEmployeeAJAX() - Complete");
 		});
 	};
 
+	this.fireEmployeeRestXML = function fireEmployeeRestXML(DNInumber) {
+		
+		console.log("Empresa1.fireEmployeeRestXML(DNInumber %O)", DNInumber);
+
+		var data = '<DniIdAndBusinessId>' + '<dniId>'+ DNInumber +'</dniId>'
+				+ '<businessId>'+ this.businessId +'</businessId>'
+				+ '</DniIdAndBusinessId>';
+
+		this.fireEmployeeAJAXXML(data);
+	};
+
+	this.fireEmployeeAJAXXML = function fireEmployeeAJAX(data) {
+		var proxyData = {
+			url : 'http://localhost:8081/FireEmployee',
+			data : data,
+			contentType : 'application/xml',
+		};
+
+		$.ajax({
+			url : 'ProxyServlet',
+			type : 'POST',
+			dataType : 'json',
+			data : proxyData,
+		}).done(this.onAjaxSuccess).fail(this.onAjaxError).always(function() {
+			console.log("fireEmployeeAJAX() - Complete");
+		});
+	};
 };
