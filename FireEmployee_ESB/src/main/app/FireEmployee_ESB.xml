@@ -12,7 +12,7 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
 http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd">
     <flow name="FireEmployee_ESBFlowDeprecated" doc:name="FireEmployee_ESBFlowDeprecated">
-        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" path="FireEmployee2" doc:name="HTTP"/>
+        <http:inbound-endpoint exchange-pattern="request-response" host="www.esbhost.com" port="8081" path="FireEmployee2" doc:name="HTTP"/>
         <json:json-to-object-transformer returnClass="esb.FireEmployeeRequestParameters" encoding="UTF-8" doc:name="JSON to Object"/>
         <component class="esb.CallFireEmployeeBPEL_SOAP" doc:name="Java"/>
         <echo-component doc:name="Echo"/>
@@ -20,7 +20,7 @@ http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/
         <json:object-to-json-transformer doc:name="Object to JSON"/>
     </flow>
     <flow name="FireEmployee_ESBFlow2" doc:name="FireEmployee_ESBFlow2">
-        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" path="FireEmployee" doc:name="HTTP"/>
+        <http:inbound-endpoint exchange-pattern="request-response" host="www.esbhost.com" port="8081" path="FireEmployee" doc:name="HTTP"/>
         <flow-ref name="ESB_AllDataTypeToJavaFireEmployeeRequestFlow1" doc:name="ParseToDniIdAndBusinessId"/>
         <flow-ref name="invokeFireEmployee" doc:name="invokeFireEmployee"/>
         <logger message="dni fired is #[payload.fireEmployeeReport.dniId]" level="INFO" doc:name="Logger"/>
@@ -28,6 +28,20 @@ http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/
         <json:object-to-json-transformer doc:name="Object to JSON"/>
 
     </flow>
+    <flow name="isEmployeeWorkingAtThisBusiness_ESBFlow1" doc:name="isEmployeeWorkingAtThisBusiness_ESBFlow1">
+        <http:inbound-endpoint exchange-pattern="request-response" host="www.esbhost.com" port="8081" path="isEmployeeWorkingAtThisBusiness" doc:name="isEmployeeWorkingAtThisBusiness"/>
+        <cxf:jaxws-service serviceClass="mtis.ws.wsdl.IsEmployeeWorkingAtThisBusiness" doc:name="SOAP"/>
+        <choice doc:name="Choice">
+            <when expression="#[payload.businessId == '1']">
+                <flow-ref name="business1" doc:name="Business1"/>
+            </when>
+        </choice>
+    </flow>
+    <sub-flow name="business1" doc:name="business1">
+        <set-payload value="#[payload.dniId.toString()]" doc:name="Set Payload"/>
+        <http:outbound-endpoint exchange-pattern="request-response" method="GET" address="http://www.empresa1.com:8082/Empresa1/api/isEmployeeWorkingAtThisBusiness?dni=#[payload]" doc:name="HTTP"/>
+        <json:json-to-object-transformer returnClass="mtis.ws.wsdl.BoolResponse" doc:name="JSON to Object"/>
+    </sub-flow>
     <sub-flow name="invokeFireEmployee" doc:name="invokeFireEmployee">
         <logger message="Dni to fire is #[payload.dniId]" level="INFO" doc:name="Logger"/>
         <cxf:jaxws-client operation="FireEmployee" clientClass="proyectomtis.ws.soap.fireemployeebusiness.FireEmployee" port="FireEmployeeSOAP" doc:name="SOAP"/>

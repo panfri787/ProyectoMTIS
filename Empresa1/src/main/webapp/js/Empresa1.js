@@ -117,7 +117,7 @@ Empresa1 = function Empresa1() {
 
 	this.fireEmployeeAJAX = function fireEmployeeAJAX(data) {
 		var proxyData = {
-			url : 'http://localhost:8081/FireEmployee',
+			url : 'http://www.esbhost.com:8081/FireEmployee',
 			data : data,
 			contentType : 'application/json',
 		};
@@ -145,7 +145,7 @@ Empresa1 = function Empresa1() {
 
 	this.fireEmployeeAJAXXML = function fireEmployeeAJAX(data) {
 		var proxyData = {
-			url : 'http://localhost:8081/FireEmployee',
+			url : 'http://www.esbhost.com:8081/FireEmployee',
 			data : data,
 			contentType : 'application/xml',
 		};
