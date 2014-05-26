@@ -101,82 +101,28 @@
 				</tbody>
 			</table>
 
-			<h1>------- DE AQUI PARA ABAJO ES UN COPI PASTE DE ALGO QUE
-				FUNCIONABA Y DE MOMENTO NO QUIERO BORRAR ------</h1>
+			<h1>Informes de despidos</h1>
 
-			<h1>MejorUA.webapp v1 1</h1>
+			<button id="getFireEmployeeReportsButton" class="btn btn-success">Refrescar listado</button>
 
-			<h2>Cliente para MejorUA.api v1</h2>
-
-			<br>
-
-			<h3>Collection</h3>
-
-			<div class="form-group">
-				<label for="collection">Collección REST</label> <input
-					id="collection" type="text" class="form-control" placeholder=""
-					value="empleado" disabled>
-			</div>
-
-			<h3>Recuperar Empleado</h3>
-
-			<form id="fGet" role="form">
-
-				<div class="form-group">
-					<label for="fGet_resourceId">Id Recurso REST</label> <input
-						id="fGet_resourceId" type="text" class="form-control"
-						placeholder="" value="1">
-				</div>
-
-				<a id="fGet_submit" class="btn btn-default">Recuperar empleado</a>
-			</form>
-
-			<p>Respuesta del API
-			<p>
-				<textarea id="fGet_response"></textarea>
-			<h3>Crear/Modificar Empleado</h3>
-
-			<form id="fPut" role="form">
-
-				<div class="form-group">
-					<label for="fPut_dni">DNI</label> <input id="fPut_dni" type="text"
-						class="form-control" placeholder="" value="1">
-				</div>
-
-				<div class="form-group">
-					<label for="fPut_socialSecurityNumber">Numero Seguridad
-						Social</label> <input id="fPut_socialSecurityNumber" type="text"
-						class="form-control"
-						placeholder="Introduzca la latitud de la incidencia" value="2">
-				</div>
-
-				<div class="form-group">
-					<label for="fPut_name">Nombre</label> <input id="fPut_name"
-						type="text" class="form-control"
-						placeholder="Introduzca la longitud de la incidencia" value="2">
-				</div>
-
-				<div class="form-group">
-					<label for="fPut_lastname1">Apellido 1</label> <input
-						id="fPut_lastname1" type="text" class="form-control"
-						placeholder="Termino al que se refiere la incidencia" value="2">
-				</div>
-
-				<div class="form-group">
-					<label for="fPut_lastname2">Apellido 2</label> <input
-						id="fPut_lastname2" type="text" class="form-control"
-						placeholder="Acción a realizar sobre el término" value="2">
-				</div>
-
-				<a id="fPut_submit" class="btn btn-default">Crear/Modificar
-					Empleado</a>
-			</form>
-
-			<p>Respuesta del API
-			<p>
-				<textarea id="fPut_response"></textarea>
+			<table class="table table-striped table-bordered">
+				<thead>
+					<tr>
+						<th>DNI</th>
+						<th>Proceso en empresa</th>
+						<th>Proceso en seguridad social</th>
+						<th>Despedido</th>
+					</tr>
+				</thead>
+				<tbody id="fireEmployeeReportTableBody">
+					<tr>
+						<td>No hay datos, pulse "Refrescar listado" para buscar datos actualizados</td>
+					</tr>
+				</tbody>
+			</table>
+			
 		</div>
-
+		<!-- /jumbotron -->
 	</div>
 	<!-- /container -->
 
@@ -189,6 +135,7 @@
 	<script src="js/libs/underscore-1.6.0.min.js"></script>
 
 	<script src="js/Empresa1.js"></script>
+	<script src="js/FireEmployeeReport.js"></script>
 	<script src="js/index.js"></script>
 </body>
 </html>
