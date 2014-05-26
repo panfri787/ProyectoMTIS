@@ -28,20 +28,6 @@ http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/
         <json:object-to-json-transformer doc:name="Object to JSON"/>
 
     </flow>
-    <flow name="isEmployeeWorkingAtThisBusiness_ESBFlow1" doc:name="isEmployeeWorkingAtThisBusiness_ESBFlow1">
-        <http:inbound-endpoint exchange-pattern="request-response" host="www.esbhost.com" port="8081" path="isEmployeeWorkingAtThisBusiness" doc:name="isEmployeeWorkingAtThisBusiness"/>
-        <cxf:jaxws-service serviceClass="mtis.ws.wsdl.IsEmployeeWorkingAtThisBusiness" doc:name="SOAP"/>
-        <choice doc:name="Choice">
-            <when expression="#[payload.businessId == '1']">
-                <flow-ref name="business1" doc:name="Business1"/>
-            </when>
-        </choice>
-    </flow>
-    <sub-flow name="business1" doc:name="business1">
-        <set-payload value="#[payload.dniId.toString()]" doc:name="Set Payload"/>
-        <http:outbound-endpoint exchange-pattern="request-response" method="GET" address="http://www.empresa1.com:8082/Empresa1/api/isEmployeeWorkingAtThisBusiness?dni=#[payload]" doc:name="HTTP"/>
-        <json:json-to-object-transformer returnClass="mtis.ws.wsdl.BoolResponse" doc:name="JSON to Object"/>
-    </sub-flow>
     <sub-flow name="invokeFireEmployee" doc:name="invokeFireEmployee">
         <logger message="Dni to fire is #[payload.dniId]" level="INFO" doc:name="Logger"/>
         <cxf:jaxws-client operation="FireEmployee" clientClass="proyectomtis.ws.soap.fireemployeebusiness.FireEmployee" port="FireEmployeeSOAP" doc:name="SOAP"/>
