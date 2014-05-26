@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" version="CE-3.4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
+http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd">
+    <flow name="ESB_JavaFireEmployeeRequestToAllDataTypeFlow1" doc:name="ESB_JavaFireEmployeeRequestToAllDataTypeFlow1">
+        <choice doc:name="Choice">
+            <when expression="#[flowVars.accept == 'application/xml']">
+                <logger message="object to xml!!" level="INFO" doc:name="LoggerXML"/>
+                <mulexml:object-to-xml-transformer doc:name="Object to XML"/>
+                <logger message="vengo de Object to XML" level="INFO" doc:name="Logger"/>
+            </when>
+            <when expression="#[flowVars.accept == 'application/json']">
+                <logger message="object to json!!" level="INFO" doc:name="LoggerJSON"/>
+                <json:object-to-json-transformer doc:name="Object to JSON"/>
+                <logger message="vengo de Object to JSON" level="INFO" doc:name="Logger"/>
+            </when>
+            <otherwise>
+                <logger message="Aqui va el error" level="INFO" doc:name="Logger"/>
+                <json:object-to-json-transformer doc:name="Object to JSON"/>
+            </otherwise>
+        </choice>
+    </flow>
+</mule>

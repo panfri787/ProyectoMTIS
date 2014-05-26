@@ -21,11 +21,12 @@ http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/
     </flow>
     <flow name="FireEmployee_ESBFlow2" doc:name="FireEmployee_ESBFlow2">
         <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" path="FireEmployee" doc:name="HTTP"/>
+        <set-variable variableName="accept" value="#[message.inboundProperties.Accept]" doc:name="Header Accept"/>
         <flow-ref name="ESB_AllDataTypeToJavaFireEmployeeRequestFlow1" doc:name="ParseToDniIdAndBusinessId"/>
         <flow-ref name="invokeFireEmployee" doc:name="invokeFireEmployee"/>
         <logger message="dni fired is #[payload.fireEmployeeReport.dniId]" level="INFO" doc:name="Logger"/>
-
-        <json:object-to-json-transformer doc:name="Object to JSON"/>
+        <logger message="#[payload]" level="INFO" doc:name="Logger"/>
+        <flow-ref name="ESB_JavaFireEmployeeRequestToAllDataTypeFlow1" doc:name="Flow Reference"/>
 
     </flow>
     <sub-flow name="invokeFireEmployee" doc:name="invokeFireEmployee">
