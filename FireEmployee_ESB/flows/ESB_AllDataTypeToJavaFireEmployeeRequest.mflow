@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="ESB_AllDataTypeToJavaFireEmployeeRequest">
+    <flow SubFlow="false" name="ESB_AllDataTypeToJavaFireEmployeeRequestFlow1" type="http://www.mulesoft.org/schema/mule/core/flow" entity-id="1e61cf1a-c3cd-4f87-8ac7-2f76a0bbb2db">
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="d9860189-84ae-428b-9440-fbebf1a0d1a1">
+            <graphicalData x="0" y="0" width="0" height="0"/>
+            <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="32f4cab1-8d03-440e-8291-a52aaaeec887">
+                <graphicalData x="21" y="215" width="68" height="67"/>
+                <properties>
+                    <property name="message" value="HTTP message.payload: #[message.payload]"/>
+                    <property name="category" value=""/>
+                    <property name="level" value="INFO"/>
+                    <property name="updated"/>
+                </properties>
+                <description></description>
+            </pattern>
+            <pattern name="XML to Object" type="http://www.mulesoft.org/schema/mule/xml/xml-to-object-transformer" entity-id="6d411578-b63d-40a2-ae14-cd2246b04882">
+                <graphicalData x="149" y="215" width="89" height="67"/>
+                <properties>
+                    <property name="auxiliary;erased;mimeType" value="true"/>
+                    <property name="returnClass" value="esb.DniIdAndBusinessId"/>
+                    <property name="ignoreBadInput" value="false"/>
+                    <property name="updated"/>
+                    <property name="auxiliary;erased;encoding" value="true"/>
+                    <property name="driverClass" value=""/>
+                    <property name="encoding" value=""/>
+                    <property name="mimeType" value=""/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/xml/alias;1">
+                        <property name="name" value="DniIdAndBusinessId"/>
+                        <property name="class" value="esb.DniIdAndBusinessId"/>
+                        <property name="isProcessed$$$$ " value="true"/>
+                    </property-collection>
+                </properties>
+                <description></description>
+            </pattern>
+            <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="b5f629ff-aad5-4858-bb11-360fe5573122">
+                <graphicalData x="298" y="215" width="68" height="67"/>
+                <properties>
+                    <property name="message" value="JSON Response: #[message.payload]"/>
+                    <property name="category" value=""/>
+                    <property name="level" value="INFO"/>
+                    <property name="updated"/>
+                </properties>
+                <description></description>
+            </pattern>
+            <pattern name="Object to JSON" type="http://www.mulesoft.org/schema/mule/json/object-to-json-transformer" entity-id="81f09f7b-8d60-4edb-af28-c9a8ec89be4c">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <description></description>
+            </pattern>
+        </lane>
+    </flow>
+    <description></description>
+</mule-configuration>
