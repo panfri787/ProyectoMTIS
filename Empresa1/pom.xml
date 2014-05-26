@@ -135,6 +135,14 @@
 		</dependency>
 
 		<dependency>
+			<groupId>javax.jms</groupId>
+			<artifactId>jms</artifactId>
+			<version>1.1</version>
+		</dependency>
+
+
+
+		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-jms_1.1_spec</artifactId>
 			<version>1.1.1</version>
@@ -150,6 +158,13 @@
 			<url>http://download.java.net/maven/glassfish</url>
 			<layout>default</layout>
 		</repository>
+
+		<repository>
+			<id>repository.jboss.org-public</id>
+			<name>JBoss repository</name>
+			<url>https://repository.jboss.org/nexus/content/groups/public</url>
+		</repository>
+
 		<repository>
 			<id>m2.java.net</id>
 			<name>Java.net Maven 2 Repository</name>

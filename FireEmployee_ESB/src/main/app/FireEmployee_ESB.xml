@@ -34,7 +34,9 @@ http://www.mulesoft.org/schema/mule/jms http://www.mulesoft.org/schema/mule/jms/
         <flow-ref name="invokeFireEmployee" doc:name="Flow Reference"/>
         <logger message="#[message.payload]" level="INFO" doc:name="Logger"/>
         <json:object-to-json-transformer doc:name="Object to JSON"/>
-        <jms:outbound-endpoint topic="fireEmployeeReport" responseTimeout="120000" connector-ref="Active_MQ" doc:name="JMS"/>
+        <jms:outbound-endpoint topic="fireEmployeeReport" responseTimeout="120000" connector-ref="Active_MQ" doc:name="JMS">
+            <jms:transaction action="NONE"/>
+        </jms:outbound-endpoint>
     </flow>
     <sub-flow name="invokeFireEmployee" doc:name="invokeFireEmployee">
         <json:json-to-object-transformer returnClass="proyectomtis.ws.soap.fireemployeebusiness.DniIdAndBusinessId" encoding="UTF-8" doc:name="JSON to Object"/>

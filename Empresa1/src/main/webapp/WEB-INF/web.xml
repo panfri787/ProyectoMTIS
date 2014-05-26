@@ -34,22 +34,10 @@
 		<url-pattern>/ProxyServlet</url-pattern>
 	</servlet-mapping>
 
-	<description>ActiveMQ Test App</description>
 	<servlet>
 		<servlet-name>JmsFireEmployeeReportInitializer</servlet-name>
-		<servlet-class>JmsFireEmployeeReportInitializer</servlet-class>
+		<servlet-class>proyectomtis.ws.rest.JmsFireEmployeeReportInitializer</servlet-class>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
-	<servlet-mapping>
-		<servlet-name>JmsFireEmployeeReportInitializer</servlet-name>
-		<url-pattern>/test.do</url-pattern>
-	</servlet-mapping>
-	<message-destination-ref>
-		<message-destination-ref-name>fireEmployeeReport</message-destination-ref-name>
-		<message-destination-type>javax.jms.Topic</message-destination-type>
-		<message-destination-usage>ConsumesProduces</message-destination-usage>
-		<message-destination-link>fireEmployeeReport</message-destination-link>
-	</message-destination-ref>
-	<message-destination>
-		<message-destination-name>fireEmployeeReport</message-destination-name>
-	</message-destination>
+
 </web-app>
