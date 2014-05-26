@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="FireEmployee_ESB">
-    <flow SubFlow="false" name="FireEmployee_ESBFlowDeprecated" type="http://www.mulesoft.org/schema/mule/core/flow" entity-id="2563e2f2-4ad0-47dc-a779-7f5e11f287d7">
+    <flow SubFlow="false" name="FireEmployee_ESBFlowDeprecated" type="http://www.mulesoft.org/schema/mule/core/flow" entity-id="9d02544d-da04-4d4b-ae91-94a81e4b15dd">
         <properties>
             <property name="initialState"/>
             <property name="processingStrategy2"/>
@@ -9,38 +9,36 @@
             <property name="tracking:enable-default-events"/>
             <property name="auxiliary;index" value="1"/>
         </properties>
-        <description></description>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#1">
             <graphicalData x="0" y="0" width="0" height="0"/>
             <endpoint direction="Inbound" message-exchange-pattern="RequestResponse" name="HTTP" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#1">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="auxiliary;erased;contentType" value="true"/>
                     <property name="port" value="8081"/>
-                    <property name="auxiliary;erased;mimeType" value="true"/>
                     <property name="host" value="localhost"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="followRedirects"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
-                    <property name="keep-alive" value="false"/>
-                    <property name="contentType" value=""/>
-                    <property name="disableTransportTransformer" value="false"/>
-                    <property name="password" value=""/>
+                    <property name="keep-alive"/>
+                    <property name="contentType"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="password"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="ref" value=""/>
-                    <property name="transformer-refs" value=""/>
-                    <property name="httpLabel" value=""/>
-                    <property name="address" value=""/>
-                    <property name="updated"/>
-                    <property name="auxiliary;erased;encoding" value="true"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="httpLabel"/>
+                    <property name="transformer-refs"/>
+                    <property name="address"/>
+                    <property name="encoding"/>
                     <property name="path" value="FireEmployee2"/>
-                    <property name="encoding" value=""/>
-                    <property name="responseTransformer-refs" value=""/>
-                    <property name="user" value=""/>
-                    <property name="mimeType" value=""/>
-                    <property name="responseTimeout" value="10000"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="method"/>
+                    <property name="user"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
                     <property name="auxiliary;index" value="2"/>
-                    <property name="connector-ref" value=""/>
+                    <property name="connector-ref"/>
                 </properties>
-                <description></description>
             </endpoint>
             <pattern name="JSON to Object" type="http://www.mulesoft.org/schema/mule/json/json-to-object-transformer" entity-id="JSON to Object#1">
                 <graphicalData x="0" y="0" width="0" height="0"/>
@@ -49,10 +47,9 @@
                     <property name="ignoreBadInput"/>
                     <property name="encoding" value="UTF-8"/>
                     <property name="mapper-ref"/>
-                    <property name="auxiliary;index" value="3"/>
                     <property name="mimeType"/>
+                    <property name="auxiliary;index" value="3"/>
                 </properties>
-                <description></description>
             </pattern>
             <pattern name="Java" type="http://www.mulesoft.org/schema/mule/core/component" entity-id="Java#1">
                 <graphicalData x="0" y="0" width="0" height="0"/>
@@ -84,13 +81,13 @@
                     <property name="ignoreBadInput"/>
                     <property name="encoding"/>
                     <property name="mapper-ref"/>
-                    <property name="auxiliary;index" value="7"/>
                     <property name="mimeType"/>
+                    <property name="auxiliary;index" value="7"/>
                 </properties>
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="FireEmployee_ESBFlow2" type="http://www.mulesoft.org/schema/mule/core/flow" entity-id="2280165b-dd81-45a1-bb96-918cebd3629a">
+    <flow SubFlow="false" name="FireEmployee_ESBFlow2" type="http://www.mulesoft.org/schema/mule/core/flow" entity-id="29485f19-b7de-4622-af8f-4f3ff830141c">
         <properties>
             <property name="initialState"/>
             <property name="processingStrategy2"/>
@@ -102,155 +99,139 @@
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#2">
             <graphicalData x="0" y="0" width="0" height="0"/>
             <endpoint direction="Inbound" message-exchange-pattern="RequestResponse" name="HTTP" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#2">
-                <graphicalData x="21" y="270" width="68" height="171"/>
+                <graphicalData x="21" y="264" width="68" height="169"/>
                 <properties>
-                    <property name="auxiliary;erased;contentType" value="true"/>
                     <property name="port" value="8081"/>
-                    <property name="auxiliary;erased;mimeType" value="true"/>
                     <property name="host" value="localhost"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="followRedirects"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
-                    <property name="keep-alive" value="false"/>
-                    <property name="contentType" value=""/>
-                    <property name="disableTransportTransformer" value="false"/>
-                    <property name="password" value=""/>
+                    <property name="keep-alive"/>
+                    <property name="contentType"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="password"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="ref" value=""/>
-                    <property name="transformer-refs" value=""/>
-                    <property name="httpLabel" value=""/>
-                    <property name="address" value=""/>
-                    <property name="updated"/>
-                    <property name="auxiliary;erased;encoding" value="true"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="httpLabel"/>
+                    <property name="transformer-refs"/>
+                    <property name="address"/>
+                    <property name="encoding"/>
                     <property name="path" value="FireEmployee"/>
-                    <property name="encoding" value=""/>
-                    <property name="responseTransformer-refs" value=""/>
-                    <property name="user" value=""/>
-                    <property name="mimeType" value=""/>
-                    <property name="responseTimeout" value="10000"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="method"/>
+                    <property name="user"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
                     <property name="auxiliary;index" value="9"/>
-                    <property name="connector-ref" value=""/>
+                    <property name="connector-ref"/>
+                </properties>
+            </endpoint>
+            <pattern name="ParseToDniIdAndBusinessId" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="fcadcfc5-9b50-49d2-8e97-a0779451c1a4">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="updated"/>
+                    <property name="name" value="ESB_AllDataTypeToJavaFireEmployeeRequestFlow1"/>
                 </properties>
                 <description></description>
-            </endpoint>
-            <pattern name="Flow Reference" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#1">
-                <graphicalData x="277" y="270" width="94" height="69"/>
+            </pattern>
+            <pattern name="invokeFireEmployee" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#1">
+                <graphicalData x="149" y="264" width="120" height="67"/>
                 <properties>
                     <property name="name" value="invokeFireEmployee"/>
-                    <property name="auxiliary;index" value="12"/>
+                    <property name="auxiliary;index" value="10"/>
                 </properties>
+                <description></description>
             </pattern>
-            <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#3">
-                <graphicalData x="431" y="270" width="68" height="69"/>
+            <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#2">
+                <graphicalData x="329" y="264" width="68" height="67"/>
                 <properties>
                     <property name="message" value="dni fired is #[payload.fireEmployeeReport.dniId]"/>
                     <property name="category"/>
                     <property name="level" value="INFO"/>
-                    <property name="auxiliary;index" value="13"/>
+                    <property name="auxiliary;index" value="11"/>
                 </properties>
+                <description></description>
             </pattern>
             <pattern name="Object to JSON" type="http://www.mulesoft.org/schema/mule/json/object-to-json-transformer" entity-id="Object to JSON#2">
-                <graphicalData x="559" y="270" width="94" height="69"/>
+                <graphicalData x="457" y="264" width="93" height="67"/>
                 <properties>
                     <property name="sourceClass"/>
                     <property name="returnClass"/>
                     <property name="ignoreBadInput"/>
                     <property name="encoding"/>
                     <property name="mapper-ref"/>
-                    <property name="auxiliary;index" value="14"/>
                     <property name="mimeType"/>
+                    <property name="auxiliary;index" value="12"/>
                 </properties>
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="true" name="invokeFireEmployee" type="http://www.mulesoft.org/schema/mule/core/subflow" entity-id="3bdc047c-3bb2-41fa-b98f-7fe6907e2f68">
+    <flow SubFlow="true" name="invokeFireEmployee" type="http://www.mulesoft.org/schema/mule/core/subflow" entity-id="043364e8-71cc-4d26-b7f9-f5fa94163ab0">
         <properties>
             <property name="initialState"/>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
-            <property name="auxiliary;index" value="15"/>
+            <property name="auxiliary;index" value="13"/>
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#3">
             <graphicalData x="0" y="0" width="0" height="0"/>
-            <pattern name="JSON to Object" type="http://www.mulesoft.org/schema/mule/json/json-to-object-transformer" entity-id="JSON to Object#2">
-                <graphicalData x="21" y="509" width="94" height="69"/>
-                <properties>
-                    <property name="auxiliary;erased;mimeType" value="true"/>
-                    <property name="returnClass" value="proyectomtis.ws.soap.fireemployeebusiness.DniIdAndBusinessId"/>
-                    <property name="ignoreBadInput" value="false"/>
-                    <property name="updated"/>
-                    <property name="encoding" value="UTF-8"/>
-                    <property name="mapper-ref" value=""/>
-                    <property name="mimeType" value=""/>
-                </properties>
-                <description></description>
-            </pattern>
-            <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#2">
-                <graphicalData x="175" y="509" width="68" height="69"/>
+            <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#3">
+                <graphicalData x="174" y="499" width="68" height="67"/>
                 <properties>
                     <property name="message" value="Dni to fire is #[payload.dniId]"/>
                     <property name="category"/>
                     <property name="level" value="INFO"/>
-                    <property name="auxiliary;moved-from" value="11"/>
+                    <property name="auxiliary;index" value="15"/>
                 </properties>
-                <description></description>
             </pattern>
-            <pattern name="SOAP" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="a244b762-00cc-4e22-a79f-4941238aeb1f">
-                <graphicalData x="431" y="509" width="68" height="171"/>
+            <pattern name="SOAP" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#1">
+                <graphicalData x="302" y="499" width="68" height="169"/>
                 <properties>
-                    <property name="wsdlLocation" value=""/>
                     <property name="port" value="FireEmployeeSOAP"/>
-                    <property name="serviceClass" value=""/>
+                    <property name="wsdlLocation"/>
                     <property name="operation" value="FireEmployee"/>
-                    <property name="updated"/>
+                    <property name="serviceClass"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-client"/>
-                    <property name="mtomEnabled" value="false"/>
-                    <property name="soapVersion" value="1.1"/>
-                    <property name="enableMuleSoapHeaders" value="true"/>
+                    <property name="mtomEnabled"/>
+                    <property name="enableMuleSoapHeaders"/>
+                    <property name="soapVersion"/>
                     <property name="clientClass" value="proyectomtis.ws.soap.fireemployeebusiness.FireEmployee"/>
-                    <property name="configuration-ref" value=""/>
-                    <property name="decoupledEndpoint" value=""/>
-                    <property-collection name="">
-                        <property name="auxiliary;erased;DATABINDING" value="true"/>
-                        <property name="DATABINDING" value=""/>
-                        <property name="class" value=""/>
-                        <property name="propertiesLabel" value=""/>
-                    </property-collection>
+                    <property name="configuration-ref"/>
+                    <property name="decoupledEndpoint"/>
+                    <property name="auxiliary;index" value="16"/>
                 </properties>
-                <description></description>
             </pattern>
             <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="HTTP" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#3">
-                <graphicalData x="559" y="509" width="68" height="69"/>
+                <graphicalData x="430" y="499" width="68" height="67"/>
                 <properties>
-                    <property name="auxiliary;erased;contentType" value="true"/>
-                    <property name="port" value=""/>
-                    <property name="auxiliary;erased;mimeType" value="true"/>
-                    <property name="host" value=""/>
-                    <property name="auxiliary;erased;port" value="true"/>
-                    <property name="followRedirects" value="false"/>
+                    <property name="port"/>
+                    <property name="host"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="followRedirects"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
-                    <property name="keep-alive" value="false"/>
-                    <property name="contentType" value=""/>
-                    <property name="disableTransportTransformer" value="false"/>
-                    <property name="password" value=""/>
+                    <property name="keep-alive"/>
+                    <property name="contentType"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="password"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="ref" value=""/>
-                    <property name="httpLabel" value=""/>
-                    <property name="transformer-refs" value=""/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="httpLabel"/>
+                    <property name="transformer-refs"/>
                     <property name="address" value="http://www.odehost.com:8080/ode/processes/FireEmployee.FireEmployeeSOAP/"/>
-                    <property name="updated"/>
-                    <property name="auxiliary;erased;encoding" value="true"/>
-                    <property name="path" value=""/>
-                    <property name="encoding" value=""/>
-                    <property name="responseTransformer-refs" value=""/>
+                    <property name="encoding"/>
+                    <property name="path"/>
+                    <property name="responseTransformer-refs"/>
                     <property name="method" value="POST"/>
-                    <property name="user" value=""/>
-                    <property name="responseTimeout" value="10000"/>
+                    <property name="user"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
                     <property name="auxiliary;index" value="17"/>
-                    <property name="mimeType" value=""/>
-                    <property name="connector-ref" value=""/>
+                    <property name="connector-ref"/>
                 </properties>
-                <description></description>
             </endpoint>
         </lane>
     </flow>

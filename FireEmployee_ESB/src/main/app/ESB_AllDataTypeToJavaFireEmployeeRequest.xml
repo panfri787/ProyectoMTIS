@@ -5,11 +5,22 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
 http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd">
     <flow name="ESB_AllDataTypeToJavaFireEmployeeRequestFlow1" doc:name="ESB_AllDataTypeToJavaFireEmployeeRequestFlow1">
-        <logger message="HTTP message.payload: #[message.payload]" level="INFO" doc:name="Logger"/>
-        <mulexml:xml-to-object-transformer returnClass="esb.DniIdAndBusinessId" doc:name="XML to Object">
-            <mulexml:alias name="DniIdAndBusinessId" class="esb.DniIdAndBusinessId"/>
-        </mulexml:xml-to-object-transformer>
-        <logger message="JSON Response: #[message.payload]" level="INFO" doc:name="Logger"/>
-        <json:object-to-json-transformer doc:name="Object to JSON"/>
+        <choice doc:name="Choice">
+            <when expression="#[message.inboundProperties['Content-Type'] == 'application/xml']">
+                <logger message="xml to object!!" level="INFO" doc:name="Logger"/>
+                <mulexml:xml-to-object-transformer returnClass="proyectomtis.ws.soap.fireemployeebusiness.DniIdAndBusinessId" doc:name="XML to Object">
+                    <mulexml:alias name="DniIdAndBusinessId" class="proyectomtis.ws.soap.fireemployeebusiness.DniIdAndBusinessId"/>
+                </mulexml:xml-to-object-transformer>
+                <logger message="Vengo de XML to Object" level="INFO" doc:name="Logger"/>
+            </when>
+            <when expression="#[message.inboundProperties['Content-Type'] == 'application/json']">
+                <logger message="json to object!!" level="INFO" doc:name="Logger"/>
+                <json:json-to-object-transformer returnClass="proyectomtis.ws.soap.fireemployeebusiness.DniIdAndBusinessId" doc:name="JSON to Object"/>
+                <logger message="Vengo de JSON to Object" level="INFO" doc:name="Logger"/>
+            </when>
+            <otherwise>
+                <logger message="Aqui va el error" level="INFO" doc:name="Logger"/>
+            </otherwise>
+        </choice>
     </flow>
 </mule>
