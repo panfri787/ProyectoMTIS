@@ -95,7 +95,8 @@ Empresa1 = function Empresa1() {
 						+ '</td><td>blablabla</td><td><button class="btn btn-danger" onclick="javascript:empresa1.fireEmployee('
 						+ employeeDNI
 						+ ')">REST-JSON</button><button class="btn btn-danger" onclick="javascript:empresa1.fireEmployeeRestXML('
-						+ employeeDNI + ')">REST-XML</button></td></tr>';
+						+ employeeDNI + ')">REST-XML</button><button class="btn btn-danger" onclick="javascript:empresa1.fireEmployeeJms('
+						+ employeeDNI + ')">JMS-JSON</button></td></tr>';
 			}
 		}
 
@@ -114,7 +115,31 @@ Empresa1 = function Empresa1() {
 
 		this.fireEmployeeAJAX(dataJSON);
 	};
+	
+	this.fireEmployeeJms = function fireEmployeeJms(DNInumber) {
 
+		var data = {
+			dniId : DNInumber,
+			businessId : this.businessId
+		};
+
+		var dataJSON = JSON.stringify(data);
+
+		this.fireEmployeeJmsAJAX(dataJSON);
+	};
+
+	this.fireEmployeeJmsAJAX = function fireEmployeeJmsAJAX(data) {
+		$.ajax({
+			url : 'api/fireEmployeeJMS',
+			type : 'POST',
+			dataType : 'json',
+			contentType: 'application/json',
+			data : data,
+		}).done(this.onAjaxSuccess).fail(this.onAjaxError).always(function() {
+			console.log("fireEmployeeJmsAJAX() - Complete");
+		});
+	};
+	
 	this.fireEmployeeAJAX = function fireEmployeeAJAX(data) {
 		var proxyData = {
 			url : 'http://localhost:8081/FireEmployee',

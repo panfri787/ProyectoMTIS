@@ -7,5 +7,6 @@
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java"/>
 	<classpathentry kind="src" output="target/test-classes" path="src/test/resources"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Axis2-1.6.2"/>
+	<classpathentry kind="lib" path="activemq-client-5.9.0.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
