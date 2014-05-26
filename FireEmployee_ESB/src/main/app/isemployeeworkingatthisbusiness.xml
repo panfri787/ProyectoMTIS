@@ -12,11 +12,19 @@ http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/
             <when expression="#[payload.businessId == '1']">
                 <flow-ref name="business1" doc:name="Business1"/>
             </when>
+            <when expression="#[payload.businessId == '2']">
+                <flow-ref name="business2" doc:name="business2"/>
+            </when>
         </choice>
     </flow>
     <sub-flow name="business1" doc:name="business1">
         <set-payload value="#[payload.dniId.toString()]" doc:name="Set Payload"/>
         <http:outbound-endpoint exchange-pattern="request-response" method="GET" address="http://www.empresa1.com:8082/Empresa1/api/isEmployeeWorkingAtThisBusiness?dni=#[payload]" doc:name="HTTP"/>
+        <json:json-to-object-transformer returnClass="mtis.ws.wsdl.BoolResponse" doc:name="JSON to Object"/>
+    </sub-flow>
+    <sub-flow name="business2" doc:name="business2">
+        <set-payload value="#[payload.dniId.toString()]" doc:name="Set Payload"/>
+        <http:outbound-endpoint exchange-pattern="request-response" method="GET" address="http://www.empresa2.com:8083/Empresa2/api/isEmployeeWorkingAtThisBusiness?dni=#[payload]" doc:name="HTTP"/>
         <json:json-to-object-transformer returnClass="mtis.ws.wsdl.BoolResponse" doc:name="JSON to Object"/>
     </sub-flow>
 </mule>
