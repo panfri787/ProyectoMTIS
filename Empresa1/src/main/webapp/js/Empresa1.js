@@ -4,15 +4,21 @@
 //Lamento el lio que pueda dar el nombrado.
 Empresa1 = function Empresa1() {
 
+	this.fireEmployeeReport = new FireEmployeeReport();
+	
 	this.businessId = "Empresa1";
 
 	this.api = {}; // Data about de REST-API. Host, collection, url, etc
 	this.employees = []; // Array of employees of the business
 
 	this.init = function init() {
+		
+		this.fireEmployeeReport.init();
 
 		_.bindAll(this, "getEmployees");
 		_.bindAll(this, "onGetEmployeesResponse");
+		
+		_.bindAll(this, "getFireEmployeeReports");
 
 		_.bindAll(this, "drawEmployees");
 
@@ -22,10 +28,13 @@ Empresa1 = function Empresa1() {
 		_.bindAll(this, "fireEmployeeRestXML");
 		_.bindAll(this, "fireEmployeeAJAXXML");
 
+		_.bindAll(this, "onfireEmployeeAJAXSuccess");
+		
 		_.bindAll(this, "onAjaxError");
 		_.bindAll(this, "onAjaxSuccess");
 
 		$("#getEmployeesButton").click(this.getEmployees);
+		$("#getFireEmployeeReportsButton").click(this.getFireEmployeeReports);
 
 		this.api.host = "api";
 		this.api.url = function() {
@@ -56,6 +65,21 @@ Empresa1 = function Empresa1() {
 		this.drawEmployees();
 	};
 
+	this.getFireEmployeeReports = function getFireEmployeeReports() {
+
+		console.log("Empresa1.getFireEmployeeReports()");
+		
+		this.api.collection = "isOkAndFireEmployeeReports";
+
+		var resourceUrl = this.api.url();
+
+		$.ajax({
+			url : resourceUrl,
+			type : "GET",
+			dataType : 'json',
+		}).done(this.fireEmployeeReport.onGetCollectionResponse).fail(this.onAjaxError);
+	};
+	
 	this.onAjaxError = function onAjaxError(xhr, status, error) {
 		console
 				.log(
@@ -152,9 +176,16 @@ Empresa1 = function Empresa1() {
 			type : 'POST',
 			dataType : 'json',
 			data : proxyData,
-		}).done(this.onAjaxSuccess).fail(this.onAjaxError).always(function() {
+		}).done(this.onfireEmployeeAJAXSuccess).fail(this.onAjaxError).always(function() {
 			console.log("fireEmployeeAJAX() - Complete");
 		});
+	};
+	
+	this.onfireEmployeeAJAXSuccess = function onAjaxSuccess(data, status, xhr) {
+		console.log("Empresa1.onfireEmployeeAJAXSuccess(data %O, status %O, xhr %O)", data,
+				status, xhr);
+		
+		this.fireEmployeeReport.addToCollection(data);
 	};
 
 	this.fireEmployeeRestXML = function fireEmployeeRestXML(DNInumber) {
@@ -180,7 +211,7 @@ Empresa1 = function Empresa1() {
 			type : 'POST',
 			dataType : 'json',
 			data : proxyData,
-		}).done(this.onAjaxSuccess).fail(this.onAjaxError).always(function() {
+		}).done(this.onfireEmployeeAJAXSuccess).fail(this.onAjaxError).always(function() {
 			console.log("fireEmployeeAJAX() - Complete");
 		});
 	};

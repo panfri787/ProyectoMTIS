@@ -45,8 +45,11 @@ public class JmsFireEmployeeReportInitializer extends HttpServlet  implements Me
 	            System.out.println("Received message '"
 	                + textMessage.getText() + "'");
 	            
+	            //TODO Capturar la url de un fichero java propierties
+	            String url = "http://www.empresa1.com:8082/Empresa1/api/isOkAndFireEmployeeReports/";
+	            
 	            String msg = textMessage.getText();
-	            sendPost("api/isOkAndFireEmployeeReports/",msg);
+	            sendPost(url,msg);
             }
         } catch (JMSException e) {
             System.out.println("Got a JMS Exception!");
@@ -109,6 +112,8 @@ private String sendPost(String url, String urlParameters) throws Exception {
 		con.setRequestMethod("POST");
 		con.setRequestProperty("User-Agent", USER_AGENT);
 		con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+		con.setRequestProperty("Content-Type", "application/json");
+
  
 		//String urlParameters = "sn=C02G8416DRJM&cn=&locale=&caller=&num=12345";
  
