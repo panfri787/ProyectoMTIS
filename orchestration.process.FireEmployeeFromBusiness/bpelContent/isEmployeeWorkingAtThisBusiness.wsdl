@@ -13,10 +13,10 @@
        <xsd:schema
     	targetNamespace="http://www.example.org/isEmployeeWorkingAtThisBusiness/">
     	
-    	<xsd:import	schemaLocation="DniIdAndBusinessId.xsd"
+    	<xsd:import	schemaLocation="relocated/DniIdAndBusinessId.xsd"
     				namespace="http://www.example.org/DniAndBusiness/">
     	</xsd:import>
-    	<xsd:import schemaLocation="BoolResponse.xsd"
+    	<xsd:import schemaLocation="relocated/BoolResponse.xsd"
     				namespace="http://www.example.org/BoolResponse/"></xsd:import>
         </xsd:schema>
   </wsdl:types>

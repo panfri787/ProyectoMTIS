@@ -5,7 +5,7 @@
 	xmlns:ns="http://www.example.org/FireEmployeeFromBusiness/Artifacts"
 	xmlns:ns0="http://www.example.org/String/" xmlns:ns1="http://www.example.org/IsOkAndFireEmployeeFromBusinessSate/"
 	xmlns:ns2="http://www.example.org/FireEmployeeFromBusiness/" xmlns:ns3="http://www.example.org/isEmployeeWorkingAtThisBusiness/" xmlns:xsd="http://www.example.org/BoolResponse/">
-    <bpel:import namespace="http://www.example.org/isEmployeeWorkingAtThisBusiness/" location="relocated/isEmployeeWorkingAtThisBusiness.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"></bpel:import>
+    <bpel:import namespace="http://www.example.org/isEmployeeWorkingAtThisBusiness/" location="isEmployeeWorkingAtThisBusiness.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"></bpel:import>
     <bpel:import importType="http://schemas.xmlsoap.org/wsdl/"
 		location="FireEmployeeFromBusiness.wsdl" namespace="http://www.example.org/FireEmployeeFromBusiness/" />
 	<bpel:import importType="http://schemas.xmlsoap.org/wsdl/"
@@ -14,7 +14,8 @@
 		<bpel:partnerLink myRole="FireEmployeeFromBusinessRole"
 			name="bpelProcessPartner" partnerLinkType="ns:FireEmployeeFromBusinessPLT" />
         
-        <bpel:partnerLink name="IsEmployeeWorkingAtThisBusinessPL" partnerLinkType="ns:IsEmployeeWorkingAtThisBusinessPLT" partnerRole="IsEmployeeWorkingAtThisBusinessPLRole"></bpel:partnerLink>
+        
+        <bpel:partnerLink name="isEmployeeWorkingAtThisBusinessPL" partnerLinkType="ns:isEmployeeWorkingAtThisBusinessPLT" partnerRole="isEmployeeWorkingAtThisBusinessPLRole"></bpel:partnerLink>
     </bpel:partnerLinks>
 	<bpel:variables>
 		<!-- //Esto es lo que aparece originalmente, las variables son "element"(de 
@@ -72,7 +73,7 @@
                     </bpel:assign>
                     
                     
-                    <bpel:invoke name="isEmployeeWorkingAtThisBusiness" partnerLink="IsEmployeeWorkingAtThisBusinessPL" operation="isEmployeeWorkingAtThisBusiness" portType="ns3:isEmployeeWorkingAtThisBusiness" inputVariable="IsEmployeeWorkingAtThisBusinessPLRequest"></bpel:invoke>
+                    <bpel:invoke name="isEmployeeWorkingAtThisBusiness" partnerLink="isEmployeeWorkingAtThisBusinessPL" operation="isEmployeeWorkingAtThisBusiness" portType="ns3:isEmployeeWorkingAtThisBusiness" inputVariable="IsEmployeeWorkingAtThisBusinessPLRequest" outputVariable="IsEmployeeWorkingAtThisBusinessPLResponse"></bpel:invoke>
                     <bpel:assign validate="no" name="AssignOutput">
                         
                         <bpel:copy>

@@ -3,9 +3,9 @@
   <partnerLinkType xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype" name="FireEmployeeFromBusinessPLT">
     <role name="FireEmployeeFromBusinessRole" portType="tns:FireEmployeeFromBusiness"/>
   </partnerLinkType>
-    <plnk:partnerLinkType name="IsEmployeeWorkingAtThisBusinessPLT">
-    <plnk:role name="IsEmployeeWorkingAtThisBusinessPLRole" portType="wsdl:isEmployeeWorkingAtThisBusiness"/>
+    <plnk:partnerLinkType name="isEmployeeWorkingAtThisBusinessPLT">
+    <plnk:role name="isEmployeeWorkingAtThisBusinessPLRole" portType="wsdl:isEmployeeWorkingAtThisBusiness"/>
   </plnk:partnerLinkType>
     <import location="FireEmployeeFromBusiness.wsdl" namespace="http://www.example.org/FireEmployeeFromBusiness/"/>
-    <import location="relocated\isEmployeeWorkingAtThisBusiness.wsdl" namespace="http://www.example.org/isEmployeeWorkingAtThisBusiness/"/>
+    <import location="isEmployeeWorkingAtThisBusiness.wsdl" namespace="http://www.example.org/isEmployeeWorkingAtThisBusiness/"/>
 </definitions>
