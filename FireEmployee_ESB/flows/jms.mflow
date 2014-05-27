@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="jms">
+    <global-element name="Active MQ" type="http://www.mulesoft.org/schema/mule/jms/activemq-xa-connector" entity-id="!!!2beb4b0c-59d5-41d8-b1ef-909c530ef769">
+        <properties>
+            <property name="jndiProviderUrl" value=""/>
+            <property name="embeddedMode" value="false"/>
+            <property name="redeliveryHandlerFactory-ref" value=""/>
+            <property name="maxRedelivery" value="-1"/>
+            <property name="connectionFactory-ref" value=""/>
+            <property name="durable" value="false"/>
+            <property name="password" value=""/>
+            <property name="username" value=""/>
+            <property name="name" value="Active_MQ"/>
+            <property name="dynamicNotification" value="false"/>
+            <property name="noLocal" value="false"/>
+            <property name="eagerConsumer" value="false"/>
+            <property name="numberOfConsumers" value="1"/>
+            <property name="acknowledgementMode" value="AUTO_ACKNOWLEDGE"/>
+            <property name="jndiInitialFactory" value=""/>
+            <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/jms/activemq-connector"/>
+            <property name="validateConnections" value="true"/>
+            <property name="disableTemporaryReplyToDestinations" value="false"/>
+            <property name="clientId" value=""/>
+            <property name="dispatcherPoolFactory-ref" value=""/>
+            <property name="persistentDelivery" value="false"/>
+            <property name="forceJndiDestinations" value="false"/>
+            <property name="connectionFactoryJndiName" value=""/>
+            <property name="specification" value="1.0.2b"/>
+            <property name="brokerURL" value="tcp://localhost:61616"/>
+            <property name="jndiDestinations" value="false"/>
+            <property name="honorQosHeaders" value="false"/>
+            <property name="cacheJmsSessions" value="false"/>
+            <property name="jndiProviderProperties-ref" value=""/>
+            <property-collection name="">
+                <property name="d" value=""/>
+                <property name="blocking" value="true"/>
+                <property name="count" value="2"/>
+                <property name="customReconnection" value="false"/>
+                <property name="standardReconnection" value="false"/>
+                <property name="class" value=""/>
+                <property name="frequency" value="2000"/>
+                <property name="reconnectForever" value="false"/>
+                <property name="noReconnection" value="true"/>
+            </property-collection>
+        </properties>
+        <description></description>
+    </global-element>
+    <flow SubFlow="false" name="jmsFlow1" type="http://www.mulesoft.org/schema/mule/core/flow" entity-id="cefdcf6f-476d-4800-9d4c-b74b8ca1504f">
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="6f44c485-0f13-45f8-980b-dc4662538010">
+            <graphicalData x="0" y="0" width="0" height="0"/>
+            <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="JMS" type="http://www.mulesoft.org/schema/mule/jms/endpoint" entity-id="93c22aa3-d3e5-4699-8ef5-7bdfdd6096a2">
+                <graphicalData x="21" y="147" width="68" height="69"/>
+                <properties>
+                    <property name="auxiliary;erased;mimeType" value="true"/>
+                    <property name="topic" value="fireEmployee"/>
+                    <property name="durableName" value=""/>
+                    <property name="disableTransportTransformer" value="false"/>
+                    <property name="disableTemporaryReplyToDestinations" value="false"/>
+                    <property name="exchange-pattern" value="one-way"/>
+                    <property name="ref" value=""/>
+                    <property name="transformer-refs" value=""/>
+                    <property name="updated"/>
+                    <property name="address" value=""/>
+                    <property name="auxiliary;erased;encoding" value="true"/>
+                    <property name="encoding" value=""/>
+                    <property name="responseTransformer-refs" value=""/>
+                    <property name="responseTimeout" value="10000"/>
+                    <property name="mimeType" value=""/>
+                    <property name="connector-ref" value="Active_MQ"/>
+                </properties>
+                <description></description>
+            </endpoint>
+            <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="a3c84a39-fb02-4576-950d-f3c905e383fa">
+                <graphicalData x="149" y="147" width="68" height="69"/>
+                <properties>
+                    <property name="message" value="Recieved JMS message: message.payload = #[message.payload]"/>
+                    <property name="category" value=""/>
+                    <property name="level" value="INFO"/>
+                    <property name="updated"/>
+                </properties>
+                <description></description>
+            </pattern>
+            <pattern name="JSON to Object" type="http://www.mulesoft.org/schema/mule/json/json-to-object-transformer" entity-id="57b284b3-4416-4fa3-ac8a-979be89a250b">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="auxiliary;erased;mimeType" value="true"/>
+                    <property name="returnClass" value="proyectomtis.ws.soap.fireemployeebusiness.DniIdAndBusinessId"/>
+                    <property name="ignoreBadInput" value="false"/>
+                    <property name="updated"/>
+                    <property name="auxiliary;erased;encoding" value="true"/>
+                    <property name="encoding" value=""/>
+                    <property name="mapper-ref" value=""/>
+                    <property name="mimeType" value=""/>
+                    <property name="auxiliary;erased;mapper-ref" value="true"/>
+                </properties>
+                <description></description>
+            </pattern>
+            <pattern name="invokeFireEmployee" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="6e83b35e-aed6-4051-95d9-f34383b127fb">
+                <graphicalData x="277" y="147" width="120" height="69"/>
+                <properties>
+                    <property name="updated"/>
+                    <property name="name" value="invokeFireEmployee"/>
+                </properties>
+                <description></description>
+            </pattern>
+            <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="823d1f0b-bc6a-432e-8d10-3f45f7b28621">
+                <graphicalData x="457" y="147" width="68" height="69"/>
+                <properties>
+                    <property name="message" value="JMS Post invoke: message.payload = #[message.payload]"/>
+                    <property name="category" value=""/>
+                    <property name="level" value="INFO"/>
+                    <property name="updated"/>
+                </properties>
+                <description></description>
+            </pattern>
+            <pattern name="Object to JSON" type="http://www.mulesoft.org/schema/mule/json/object-to-json-transformer" entity-id="7d6d0823-ea16-450c-a740-1e812f4ad7b0">
+                <graphicalData x="585" y="147" width="94" height="69"/>
+            </pattern>
+            <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="28b7a39f-9a57-4455-8554-69595875ab07">
+                <graphicalData x="739" y="147" width="68" height="69"/>
+                <properties>
+                    <property name="message" value="JMS Post Object To JSON: message.payload = #[message.payload]"/>
+                    <property name="category" value=""/>
+                    <property name="level" value="INFO"/>
+                    <property name="updated"/>
+                </properties>
+                <description></description>
+            </pattern>
+            <endpoint direction="Outbound" message-exchange-pattern="OneWay" name="JMS" type="http://www.mulesoft.org/schema/mule/jms/endpoint" entity-id="c4595225-9393-4ce7-93b8-ad0439f8d0f5">
+                <graphicalData x="867" y="147" width="68" height="69"/>
+                <properties>
+                    <property name="auxiliary;erased;mimeType" value="true"/>
+                    <property name="topic" value="fireEmployeeReport"/>
+                    <property name="disableTransportTransformer" value="false"/>
+                    <property name="disableTemporaryReplyToDestinations" value="false"/>
+                    <property name="exchange-pattern" value="one-way"/>
+                    <property name="ref" value=""/>
+                    <property name="transformer-refs" value=""/>
+                    <property name="updated"/>
+                    <property name="address" value=""/>
+                    <property name="auxiliary;erased;encoding" value="true"/>
+                    <property name="encoding" value=""/>
+                    <property name="responseTransformer-refs" value=""/>
+                    <property name="responseTimeout" value="10000"/>
+                    <property name="mimeType" value=""/>
+                    <property name="connector-ref" value="Active_MQ"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/jms/transaction;1">
+                        <property name="interactWithExternal" value="false"/>
+                        <property name="auxiliary;erased;timeout" value="true"/>
+                        <property name="action" value="NONE"/>
+                        <property name="type" value="jms"/>
+                        <property name="isProcessed$$$$ " value="true"/>
+                        <property name="exchange-pattern" value="one-way"/>
+                        <property name="timeout" value=""/>
+                    </property-collection>
+                </properties>
+                <description></description>
+            </endpoint>
+        </lane>
+    </flow>
+    <description></description>
+</mule-configuration>

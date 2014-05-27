@@ -46,6 +46,7 @@ public class ProxyServlet extends HttpServlet {
 		String url = request.getParameter("url");
 		String data = request.getParameter("data");
 		String contentType = request.getParameter("contentType");
+		String accept = request.getParameter("accept");
 		String responseString = "Error";
 		
 		System.out.println("ProxyServlet.doPost() -> url= " + url);
@@ -60,7 +61,7 @@ public class ProxyServlet extends HttpServlet {
 		
 		
 		try {
-			responseString = sendPost(url,data, contentType);
+			responseString = sendPost(url,data, contentType, accept);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -71,7 +72,7 @@ public class ProxyServlet extends HttpServlet {
 	}
 	
 	//Extraido de: http://www.mkyong.com/java/how-to-send-http-request-getpost-in-java/
-	private String sendPost(String url, String urlParameters, String contentType) throws Exception {
+	private String sendPost(String url, String urlParameters, String contentType, String accept) throws Exception {
 		
 		String USER_AGENT = "ProxyServlet";
 		
@@ -85,6 +86,7 @@ public class ProxyServlet extends HttpServlet {
 		con.setRequestProperty("User-Agent", USER_AGENT);
 		con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
 		con.setRequestProperty("Content-Type", contentType);
+		con.setRequestProperty("Accept", accept);
  
 		//String urlParameters = "sn=C02G8416DRJM&cn=&locale=&caller=&num=12345";
  
