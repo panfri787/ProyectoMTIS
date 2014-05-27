@@ -55,6 +55,10 @@
                             </bpel:from>
                             <bpel:to part="DniIdAndBusinessId" variable="FireEmployeeFromBusinessPLRequest"></bpel:to>
                         </bpel:copy>
+                        <bpel:copy>
+                            <bpel:from part="DniIdAndBusinessId" variable="input"></bpel:from>
+                            <bpel:to part="DniIdAndBusinessId" variable="FireEmployeeFromBusinessPLRequest"></bpel:to>
+                        </bpel:copy>
                     </bpel:assign>
                     <bpel:invoke name="Invoke" partnerLink="FireEmployeeFromBusinessPL" operation="FireEmployeeFromBusiness" portType="ns3:FireEmployeeFromBusiness" inputVariable="FireEmployeeFromBusinessPLRequest" outputVariable="FireEmployeeFromBusinessPLResponse"></bpel:invoke>
                     <bpel:assign validate="no" name="AssignOutput">
@@ -72,14 +76,49 @@
 </bpel:literal></bpel:from>
                             <bpel:to variable="output" part="IsOkAndFireEmployeeReport"></bpel:to>
                         </bpel:copy>
-                        <bpel:copy>
-                            <bpel:from part="IsOkAndFireEmployeeFromBusinessSate" variable="FireEmployeeFromBusinessPLResponse">
-                                <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[processState]]></bpel:query>
+                        <!-- 
+                        <bpel:copy keepSrcElementName="yes">
+                            <bpel:from part="IsOkAndFireEmployeeFromBusinessSate" variable="FireEmployeeFromBusinessPLResponse">
+                                <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+                                    <![CDATA[processState]]>
+                                </bpel:query>
                             </bpel:from>
                             <bpel:to part="IsOkAndFireEmployeeReport" variable="output">
-                                <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[fireEmployeeReport/businessProcessState]]></bpel:query>
+                                <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+                                    <![CDATA[fireEmployeeReport/businessProcessState]]>
+                                </bpel:query>
                             </bpel:to>
                         </bpel:copy>
+                        <bpel:copy>
+                            <bpel:from part="DniIdAndBusinessId" variable="input">
+                                <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[dniId]]></bpel:query>
+                            </bpel:from>
+                            <bpel:to part="IsOkAndFireEmployeeReport" variable="output">
+                                <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[fireEmployeeReport/dniId]]></bpel:query>
+                            </bpel:to>
+                        </bpel:copy>
+                        <bpel:copy>
+                            <bpel:from part="DniIdAndBusinessId" variable="input">
+                                <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+                                    <![CDATA[businessId]]>
+                                </bpel:query>
+                            </bpel:from>
+                            <bpel:to part="IsOkAndFireEmployeeReport" variable="output">
+                                <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+                                    <![CDATA[fireEmployeeReport/businessId]]>
+                                </bpel:query>
+                            </bpel:to>
+                        </bpel:copy>
+                        
+                        <bpel:copy>
+                            <bpel:from part="IsOkAndFireEmployeeFromBusinessSate" variable="FireEmployeeFromBusinessPLResponse">
+                                <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[isCompletedWithoutErrors]]></bpel:query>
+                            </bpel:from>
+                            <bpel:to part="IsOkAndFireEmployeeReport" variable="output">
+                                <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[isCompletedWithoutErrors]]></bpel:query>
+                            </bpel:to>
+                        </bpel:copy>
+                         -->
                     </bpel:assign>
                     <bpel:reply name="ReplyToFireEmployee" operation="FireEmployee"
 						partnerLink="bpelProcessPartner" portType="ns2:FireEmployee"

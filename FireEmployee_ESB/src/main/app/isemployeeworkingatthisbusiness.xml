@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" version="CE-3.4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
-http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" version="CE-3.4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
-http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd">
+http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+    
     <flow name="isEmployeeWorkingAtThisBusinessFlow1" doc:name="isEmployeeWorkingAtThisBusinessFlow1">
-        <http:inbound-endpoint exchange-pattern="request-response" host="www.esbhost.com" port="8088" path="isEmployeeWorkingAtThisBusiness" doc:name="HTTP"/>
-        <cxf:jaxws-service serviceClass="mtis.ws.wsdl.IsEmployeeWorkingAtThisBusiness" doc:name="BPEL FireEmployeeFromBusiness"/>
+        <http:inbound-endpoint exchange-pattern="request-response" host="www.esbhost.com" port="8081" path="isEmployeeWorkingAtThisBusiness" doc:name="HTTP"/>
+        <cxf:jaxws-service serviceClass="mtis.ws.wsdl.IsEmployeeWorkingAtThisBusiness" doc:name="BPEL IsEmployeeWorkingAtThisBusiness"/>
+        <logger message="To choice or not to choice, thats the question #[payload.businessId]" level="INFO" doc:name="Logger"/>
         <choice doc:name="Choice">
-            <when expression="#[payload.businessId == '1']">
+            <when expression="#[payload.businessId == 'Empresa1']">
+                <logger message="post choice Empresa1 " level="INFO" doc:name="Logger"/>
                 <flow-ref name="business1" doc:name="Business1"/>
             </when>
-            <when expression="#[payload.businessId == '2']">
+            <when expression="#[payload.businessId == 'Empresa2']">
+                <logger message="post choice Empresa1 " level="INFO" doc:name="Logger"/>
                 <flow-ref name="business2" doc:name="business2"/>
             </when>
         </choice>
@@ -20,11 +24,13 @@ http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/
     <sub-flow name="business1" doc:name="business1">
         <set-payload value="#[payload.dniId.toString()]" doc:name="Set Payload"/>
         <http:outbound-endpoint exchange-pattern="request-response" method="GET" address="http://www.empresa1.com:8082/Empresa1/api/isEmployeeWorkingAtThisBusiness?dni=#[payload]" doc:name="HTTP"/>
+        <logger message="Empresa 1 post AJAX GET isEmployeeWorking at this busines. message.payload #[message.payload]" level="INFO" doc:name="Logger"/>
         <json:json-to-object-transformer returnClass="mtis.ws.wsdl.BoolResponse" doc:name="JSON to Object"/>
     </sub-flow>
     <sub-flow name="business2" doc:name="business2">
         <set-payload value="#[payload.dniId.toString()]" doc:name="Set Payload"/>
         <http:outbound-endpoint exchange-pattern="request-response" method="GET" address="http://www.empresa2.com:8083/Empresa2/api/isEmployeeWorkingAtThisBusiness?dni=#[payload]" doc:name="HTTP"/>
+        <logger message="Empresa 2 post AJAX GET isEmployeeWorking at this busines. message.payload #[message.payload]" level="INFO" doc:name="Logger"/>
         <json:json-to-object-transformer returnClass="mtis.ws.wsdl.BoolResponse" doc:name="JSON to Object"/>
     </sub-flow>
 </mule>
