@@ -6,7 +6,7 @@ http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/jso
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd">
     <flow name="isEmployeeWorkingAtThisBusinessFlow1" doc:name="isEmployeeWorkingAtThisBusinessFlow1">
-        <http:inbound-endpoint exchange-pattern="request-response" host="www.esbhost.com" port="8081" path="isEmployeeWorkingAtThisBusiness" doc:name="HTTP"/>
+        <http:inbound-endpoint exchange-pattern="request-response" host="www.esbhost.com" port="8088" path="isEmployeeWorkingAtThisBusiness" doc:name="HTTP"/>
         <cxf:jaxws-service serviceClass="mtis.ws.wsdl.IsEmployeeWorkingAtThisBusiness" doc:name="BPEL FireEmployeeFromBusiness"/>
         <choice doc:name="Choice">
             <when expression="#[payload.businessId == '1']">

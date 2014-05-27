@@ -149,7 +149,7 @@ Empresa1 = function Empresa1() {
 
 	this.fireEmployeeAJAX = function fireEmployeeAJAX(data) {
 		var proxyData = {
-			url : 'http://www.esbhost.com:8081/FireEmployee',
+			url : 'http://www.esbhost.com:8079/FireEmployee',
 			data : data,
 			contentType : 'application/json',
 			accept : 'application/json',
@@ -188,7 +188,7 @@ Empresa1 = function Empresa1() {
 		var dataJSON = JSON.stringify(data);
 
 		var proxyData = {
-			url : 'http://localhost:8081/FireEmployee',
+			url : 'http://localhost:8079/FireEmployee',
 			data : dataJSON,
 			contentType : 'application/json',
 			accept : 'application/xml',
@@ -256,7 +256,7 @@ Empresa1 = function Empresa1() {
 
 	this.fireEmployeeAJAXXML = function fireEmployeeAJAX(data) {
 		var proxyData = {
-			url : 'http://www.esbhost.com:8081/FireEmployee',
+			url : 'http://www.esbhost.com:8079/FireEmployee',
 			data : data,
 			contentType : 'application/xml',
 			accept : 'application/json',
@@ -282,7 +282,7 @@ Empresa1 = function Empresa1() {
 				+ '</DniIdAndBusinessId>';
 
 		var proxyData = {
-			url : 'http://localhost:8081/FireEmployee',
+			url : 'http://www.esbhost.com:8079/FireEmployee',
 			data : data,
 			contentType : 'application/xml',
 			accept : 'application/xml',
