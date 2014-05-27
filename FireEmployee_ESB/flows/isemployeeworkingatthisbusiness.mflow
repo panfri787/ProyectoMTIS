@@ -207,6 +207,7 @@
                     <property name="auxiliary;index" value="11"/>
                     <property name="connector-ref"/>
                 </properties>
+                <description></description>
             </endpoint>
             <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="82244c55-9945-48c2-9f91-80b8c40fab86">
                 <graphicalData x="0" y="0" width="0" height="0"/>
@@ -253,31 +254,34 @@
             <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="HTTP" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#3">
                 <graphicalData x="156" y="615" width="68" height="69"/>
                 <properties>
-                    <property name="port"/>
-                    <property name="host"/>
-                    <property name="businessEventsLabel"/>
-                    <property name="followRedirects"/>
-                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
-                    <property name="keep-alive"/>
-                    <property name="contentType"/>
-                    <property name="disableTransportTransformer"/>
-                    <property name="password"/>
+                    <property name="port" value="8081"/>
+                    <property name="auxiliary;erased;mimeType" value="true"/>
+                    <property name="contentType" value=""/>
+                    <property name="password" value=""/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events"/>
-                    <property name="ref"/>
-                    <property name="httpLabel"/>
-                    <property name="transformer-refs"/>
-                    <property name="address" value="http://www.empresa2.com:8083/Empresa2/api/isEmployeeWorkingAtThisBusiness?dni=#[payload]"/>
-                    <property name="encoding"/>
-                    <property name="path"/>
-                    <property name="responseTransformer-refs"/>
-                    <property name="method" value="GET"/>
-                    <property name="user"/>
-                    <property name="mimeType"/>
-                    <property name="responseTimeout"/>
+                    <property name="updated"/>
+                    <property name="auxiliary;erased;encoding" value="true"/>
+                    <property name="path" value=""/>
+                    <property name="encoding" value=""/>
+                    <property name="responseTransformer-refs" value=""/>
                     <property name="auxiliary;index" value="15"/>
-                    <property name="connector-ref"/>
+                    <property name="mimeType" value=""/>
+                    <property name="responseTimeout" value="10000"/>
+                    <property name="auxiliary;erased;contentType" value="true"/>
+                    <property name="host" value=""/>
+                    <property name="followRedirects" value="false"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
+                    <property name="keep-alive" value="false"/>
+                    <property name="disableTransportTransformer" value="false"/>
+                    <property name="ref" value=""/>
+                    <property name="transformer-refs" value=""/>
+                    <property name="httpLabel" value=""/>
+                    <property name="address" value="http://www.empresa2.com:8083/Empresa2/api/isEmployeeWorkingAtThisBusiness?dni=#[payload]"/>
+                    <property name="method" value="GET"/>
+                    <property name="user" value=""/>
+                    <property name="connector-ref" value=""/>
                 </properties>
+                <description></description>
             </endpoint>
             <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="77abd626-eaa0-4cc4-9901-49e2daeef929">
                 <graphicalData x="0" y="0" width="0" height="0"/>
