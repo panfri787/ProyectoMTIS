@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="ESB_JavaFireEmployeeToAllData">
+    <flow SubFlow="false" name="ESB_JavaFireEmployeeToAllDataFlow1" type="http://www.mulesoft.org/schema/mule/core/flow" entity-id="6623f764-a01c-4b0d-be29-724297519c1d">
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="211f52cf-6c89-4a11-bdf1-2494f6e5f0f2">
+            <graphicalData x="0" y="0" width="0" height="0"/>
+            <splitter index="0" name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="60435e08-8149-4b32-bee9-9082f0804ea6">
+                <graphicalData x="149" y="51" width="237" height="193"/>
+                <properties>
+                    <property name="updated"/>
+                    <property name=";INDEX" value="0"/>
+                    <property-collection name="1900ac25-62ae-4274-bf82-650fb233151a">
+                        <property name="choice.expression" value="#[flowVars.accept == 'application/xml']"/>
+                    </property-collection>
+                    <property-collection name="745edd72-89cc-4183-b57f-649da0fde08c">
+                        <property name="choice.otherwise" value="true"/>
+                        <property name="choice.expression" value=""/>
+                    </property-collection>
+                    <property-collection name="c564f0f5-e479-4be0-9f3f-27e918a5a40a">
+                        <property name="choice.expression" value="#[flowVars.accept == 'application/json']"/>
+                    </property-collection>
+                </properties>
+                <description></description>
+                <pattern name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="581007d2-1860-4015-9281-01fd53a1f21f">
+                    <properties>
+                        <property name="updated"/>
+                        <property name=";INDEX" value="0"/>
+                        <property-collection name="1900ac25-62ae-4274-bf82-650fb233151a">
+                            <property name="choice.expression" value="#[flowVars.accept == 'application/xml']"/>
+                        </property-collection>
+                        <property-collection name="745edd72-89cc-4183-b57f-649da0fde08c">
+                            <property name="choice.otherwise" value="true"/>
+                            <property name="choice.expression" value=""/>
+                        </property-collection>
+                        <property-collection name="c564f0f5-e479-4be0-9f3f-27e918a5a40a">
+                            <property name="choice.expression" value="#[flowVars.accept == 'application/json']"/>
+                        </property-collection>
+                    </properties>
+                </pattern>
+                <compartment entity-id="4fc627c2-eca7-4e27-93e9-78876ef72bd5">
+                    <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="c564f0f5-e479-4be0-9f3f-27e918a5a40a">
+                        <pattern name="LoggerJSON" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="5cc71cf1-faf7-42ac-a5ea-7cd19a74a013">
+                            <graphicalData x="169" y="64" width="68" height="69"/>
+                            <properties>
+<property name="message" value="object to json!!"/>
+<property name="category" value=""/>
+<property name="level" value="INFO"/>
+<property name="updated"/>
+                            </properties>
+                            <description></description>
+                        </pattern>
+                        <pattern name="Object to JSON" type="http://www.mulesoft.org/schema/mule/json/object-to-json-transformer" entity-id="251343f2-7911-4566-addf-198cb6784208">
+                            <graphicalData x="297" y="64" width="94" height="69"/>
+                        </pattern>
+                        <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="997ffdd1-5e12-42cb-a822-e9a60bf0415a">
+                            <graphicalData x="0" y="0" width="0" height="0"/>
+                            <properties>
+<property name="message" value="Vengo de Object to JSON"/>
+<property name="category" value=""/>
+<property name="level" value="INFO"/>
+<property name="updated"/>
+                            </properties>
+                            <description></description>
+                        </pattern>
+                    </lane>
+                    <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="true" entity-id="745edd72-89cc-4183-b57f-649da0fde08c">
+                        <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="ba39fd9d-dded-42a9-a76c-f4cced3e1bd2">
+                            <graphicalData x="179" y="254" width="68" height="69"/>
+                            <properties>
+<property name="message" value="Entro a Default"/>
+<property name="category" value=""/>
+<property name="level" value="INFO"/>
+<property name="updated"/>
+                            </properties>
+                            <description></description>
+                        </pattern>
+                        <pattern name="Object to JSON" type="http://www.mulesoft.org/schema/mule/json/object-to-json-transformer" entity-id="2b7e6565-ead1-411c-adc4-c9d702b5d8e9">
+                            <graphicalData x="0" y="0" width="0" height="0"/>
+                        </pattern>
+                    </lane>
+                    <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="1900ac25-62ae-4274-bf82-650fb233151a">
+                        <pattern name="LoggerXML" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="1844e306-9f46-47eb-8d87-c6d582efc133">
+                            <graphicalData x="169" y="145" width="68" height="69"/>
+                            <properties>
+<property name="message" value="object to xml!!"/>
+<property name="category" value=""/>
+<property name="level" value="INFO"/>
+<property name="updated"/>
+                            </properties>
+                            <description></description>
+                        </pattern>
+                        <pattern name="Object to XML" type="http://www.mulesoft.org/schema/mule/xml/object-to-xml-transformer" entity-id="cf615b5d-1dd0-4303-9a4c-0b01d566c53b">
+                            <graphicalData x="297" y="145" width="90" height="69"/>
+                            <description></description>
+                        </pattern>
+                        <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="2758123f-e578-4a00-a4fc-a600f0076ac1">
+                            <graphicalData x="0" y="0" width="0" height="0"/>
+                            <properties>
+<property name="message" value="Vengo de Object to XML"/>
+<property name="category" value=""/>
+<property name="level" value="INFO"/>
+<property name="updated"/>
+                            </properties>
+                            <description></description>
+                        </pattern>
+                    </lane>
+                </compartment>
+            </splitter>
+        </lane>
+    </flow>
+    <description></description>
+</mule-configuration>
