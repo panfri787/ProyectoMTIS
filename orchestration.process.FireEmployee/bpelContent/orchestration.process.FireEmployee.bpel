@@ -119,6 +119,22 @@
                             </bpel:to>
                         </bpel:copy>
                          -->
+                        <bpel:copy>
+                            <bpel:from part="DniIdAndBusinessId" variable="input">
+                                <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[dniId]]></bpel:query>
+                            </bpel:from>
+                            <bpel:to part="IsOkAndFireEmployeeReport" variable="output">
+                                <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[fireEmployeeReport/dniId]]></bpel:query>
+                            </bpel:to>
+                        </bpel:copy>
+                        <bpel:copy>
+                            <bpel:from part="IsOkAndFireEmployeeFromBusinessSate" variable="FireEmployeeFromBusinessPLResponse">
+                                <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[isCompletedWithoutErrors]]></bpel:query>
+                            </bpel:from>
+                            <bpel:to part="IsOkAndFireEmployeeReport" variable="output">
+                                <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[isCompletedWithoutErrors]]></bpel:query>
+                            </bpel:to>
+                        </bpel:copy>
                     </bpel:assign>
                     <bpel:reply name="ReplyToFireEmployee" operation="FireEmployee"
 						partnerLink="bpelProcessPartner" portType="ns2:FireEmployee"
