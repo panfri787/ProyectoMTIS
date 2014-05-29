@@ -112,22 +112,22 @@ Empresa1 = function Empresa1() {
 
 				employee = employees[i];
 				employeeDNI = employee.dni.dni.id;
-				employeeName = employee.dni.dni.completeName;
+				employeeName = employee.dni.dni.completeName.name;
 
 				html += '<tr><td>'
 						+ employeeDNI
 						+ '</td><td>'
 						+ employeeName
-						+ '</td><td>blablabla</td><td><button class="btn btn-danger" onclick="javascript:empresa1.fireEmployee('
+						+ '</td><td>blablabla</td><td><button class="btn btn-danger" onclick="javascript:empresa1.fireEmployee(\''
 						+ employeeDNI
-						+ ')">REST-JSON-JSON</button><button class="btn btn-danger" onclick="javascript:empresa1.fireEmployeeREST_JSON_XML('
+						+ '\')">REST-JSON-JSON</button><button class="btn btn-danger" onclick="javascript:empresa1.fireEmployeeREST_JSON_XML(\''
 						+ employeeDNI
-						+ ')">REST_JSON_XML</button><button class="btn btn-danger" onclick="javascript:empresa1.fireEmployeeRestXML('
+						+ '\')">REST_JSON_XML</button><button class="btn btn-danger" onclick="javascript:empresa1.fireEmployeeRestXML(\''
 						+ employeeDNI
-						+ ')">REST-XML-JSON</button><button class="btn btn-danger" onclick="javascript:empresa1.fireEmployeeREST_XML_XML('
+						+ '\')">REST-XML-JSON</button><button class="btn btn-danger" onclick="javascript:empresa1.fireEmployeeREST_XML_XML(\''
 						+ employeeDNI
-						+ ')">REST-XML-XML</button><button class="btn btn-danger" onclick="javascript:empresa1.fireEmployeeJms('
-						+ employeeDNI + ')">JMS-JSON</button></td></tr>';
+						+ '\')">REST-XML-XML</button><button class="btn btn-danger" onclick="javascript:empresa1.fireEmployeeJms(\''
+						+ employeeDNI + '\')">JMS-JSON</button></td></tr>';
 			}
 		}
 
@@ -149,7 +149,7 @@ Empresa1 = function Empresa1() {
 
 	this.fireEmployeeAJAX = function fireEmployeeAJAX(data) {
 		var proxyData = {
-			url : 'http://localhost:8081/FireEmployee',
+			url : 'http://www.esbhost.com:8079/FireEmployee',
 			data : data,
 			contentType : 'application/json',
 			accept : 'application/json',
@@ -188,7 +188,7 @@ Empresa1 = function Empresa1() {
 		var dataJSON = JSON.stringify(data);
 
 		var proxyData = {
-			url : 'http://localhost:8081/FireEmployee',
+			url : 'http://localhost:8079/FireEmployee',
 			data : dataJSON,
 			contentType : 'application/json',
 			accept : 'application/xml',
@@ -256,7 +256,7 @@ Empresa1 = function Empresa1() {
 
 	this.fireEmployeeAJAXXML = function fireEmployeeAJAX(data) {
 		var proxyData = {
-			url : 'http://localhost:8081/FireEmployee',
+			url : 'http://www.esbhost.com:8079/FireEmployee',
 			data : data,
 			contentType : 'application/xml',
 			accept : 'application/json',
@@ -282,7 +282,7 @@ Empresa1 = function Empresa1() {
 				+ '</DniIdAndBusinessId>';
 
 		var proxyData = {
-			url : 'http://localhost:8081/FireEmployee',
+			url : 'http://www.esbhost.com:8079/FireEmployee',
 			data : data,
 			contentType : 'application/xml',
 			accept : 'application/xml',

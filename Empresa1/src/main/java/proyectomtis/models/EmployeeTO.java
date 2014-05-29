@@ -13,7 +13,7 @@ public class EmployeeTO {
 
 	public Dni dni;
 
-	public EmployeeTO(String dniNumber) {
+	public EmployeeTO(String dniNumber, String name) {
 
 		//Intentando instanciar Dni desde XML
 		/*
@@ -38,6 +38,9 @@ public class EmployeeTO {
 		dni.setDni(new DniComplexTypes());
 		
 		dni.getDni().setId(dniNumber);
+		CompleteName completeName = new CompleteName();
+		completeName.setName(name);
+		dni.getDni().setCompleteName(completeName);
 	}
 
 	public static class Address implements org.apache.axis2.databinding.ADBBean {

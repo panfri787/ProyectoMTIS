@@ -4,15 +4,19 @@
 	xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
 	xmlns:ns="http://www.example.org/FireEmployeeFromBusiness/Artifacts"
 	xmlns:ns0="http://www.example.org/String/" xmlns:ns1="http://www.example.org/IsOkAndFireEmployeeFromBusinessSate/"
-	xmlns:ns2="http://www.example.org/FireEmployeeFromBusiness/">
-	<bpel:import importType="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:ns2="http://www.example.org/FireEmployeeFromBusiness/" xmlns:ns3="http://www.example.org/isEmployeeWorkingAtThisBusiness/" xmlns:xsd="http://www.example.org/BoolResponse/">
+    <bpel:import namespace="http://www.example.org/isEmployeeWorkingAtThisBusiness/" location="isEmployeeWorkingAtThisBusiness.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"></bpel:import>
+    <bpel:import importType="http://schemas.xmlsoap.org/wsdl/"
 		location="FireEmployeeFromBusiness.wsdl" namespace="http://www.example.org/FireEmployeeFromBusiness/" />
 	<bpel:import importType="http://schemas.xmlsoap.org/wsdl/"
 		location="FireEmployeeFromBusinessArtifacts.wsdl" namespace="http://www.example.org/FireEmployeeFromBusiness/Artifacts" />
 	<bpel:partnerLinks>
 		<bpel:partnerLink myRole="FireEmployeeFromBusinessRole"
 			name="bpelProcessPartner" partnerLinkType="ns:FireEmployeeFromBusinessPLT" />
-	</bpel:partnerLinks>
+        
+        
+        <bpel:partnerLink name="isEmployeeWorkingAtThisBusinessPL" partnerLinkType="ns:isEmployeeWorkingAtThisBusinessPLT" partnerRole="isEmployeeWorkingAtThisBusinessPLRole"></bpel:partnerLink>
+    </bpel:partnerLinks>
 	<bpel:variables>
 		<!-- //Esto es lo que aparece originalmente, las variables son "element"(de 
 			XML/XSD) en vez de "messageType" (de WSDL) <bpel:variable element="ns0:String" 
@@ -21,7 +25,11 @@
 			name="input" />
 		<bpel:variable messageType="ns2:FireEmployeeFromBusinessResponse"
 			name="output" />
-	</bpel:variables>
+        <bpel:variable name="IsEmployeeWorkingAtThisBusinessPLResponse" messageType="ns3:isEmployeeWorkingAtThisBusinessResponse"></bpel:variable>
+        <bpel:variable name="IsEmployeeWorkingAtThisBusinessPLRequest" messageType="ns3:isEmployeeWorkingAtThisBusinessRequest"></bpel:variable>
+        
+        
+    </bpel:variables>
 	<bpel:sequence name="MainSequence">
 		<bpel:pick createInstance="yes" name="SwitchInvokedOperation">
 			<bpel:onMessage operation="FireEmployeeFromBusiness"
@@ -49,17 +57,40 @@
 						expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"> <![CDATA[aaaa]]> 
 						</bpel:from> <bpel:to variable="fireEmployeeFromBusinessResponse"></bpel:to> 
 						</bpel:copy> </bpel:assign> -->
-                    <bpel:assign validate="no" name="Assign1">
+                    <bpel:assign validate="no" name="AssignInput">
                         <bpel:copy>
-                            <bpel:from>
-                                <bpel:literal xml:space="preserve"><tns:IsOkAndFireEmployeeFromBusinessSate xmlns:tns="http://www.example.org/IsOkAndFireEmployeeFromBusinessSate/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <isCompletedWithoutErrors>false</isCompletedWithoutErrors>
-  <processState>El Jony no esta convencido</processState>
-</tns:IsOkAndFireEmployeeFromBusinessSate></bpel:literal>
-                            </bpel:from>
-                            <bpel:to part="IsOkAndFireEmployeeFromBusinessSate" variable="output"></bpel:to>
+                            <bpel:from><bpel:literal><tns:DniIdAndBusinessId xmlns:tns="http://www.example.org/DniAndBusiness/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <dniId>dniId</dniId>
+  <businessId>businessId</businessId>
+</tns:DniIdAndBusinessId>
+</bpel:literal></bpel:from>
+                            <bpel:to variable="IsEmployeeWorkingAtThisBusinessPLRequest" part="DniIdAndBusinessId"></bpel:to>
                         </bpel:copy>
+                        <bpel:copy>
+                            <bpel:from part="DniIdAndBusinessId" variable="input"></bpel:from>
+                            <bpel:to part="DniIdAndBusinessId" variable="IsEmployeeWorkingAtThisBusinessPLRequest"></bpel:to>
+                        </bpel:copy>
+                    </bpel:assign>
+                    
+                    
+                    <bpel:invoke name="isEmployeeWorkingAtThisBusiness" partnerLink="isEmployeeWorkingAtThisBusinessPL" operation="isEmployeeWorkingAtThisBusiness" portType="ns3:isEmployeeWorkingAtThisBusiness" inputVariable="IsEmployeeWorkingAtThisBusinessPLRequest" outputVariable="IsEmployeeWorkingAtThisBusinessPLResponse"></bpel:invoke>
+                    <bpel:assign validate="no" name="AssignOutput">
                         
+                        <bpel:copy>
+                            <bpel:from><bpel:literal xml:space="preserve"><tns:IsOkAndFireEmployeeFromBusinessSate xmlns:tns="http://www.example.org/IsOkAndFireEmployeeFromBusinessSate/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <isCompletedWithoutErrors>true</isCompletedWithoutErrors>
+  <processState>El Jony no confia</processState>
+</tns:IsOkAndFireEmployeeFromBusinessSate></bpel:literal></bpel:from>
+                            <bpel:to variable="output" part="IsOkAndFireEmployeeFromBusinessSate"></bpel:to>
+                        </bpel:copy>
+                        <bpel:copy>
+                            <bpel:from part="IsWorking" variable="IsEmployeeWorkingAtThisBusinessPLResponse">
+                                <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[xsd:Ok]]></bpel:query>
+                            </bpel:from>
+                            <bpel:to part="IsOkAndFireEmployeeFromBusinessSate" variable="output">
+                                <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[isCompletedWithoutErrors]]></bpel:query>
+                            </bpel:to>
+                        </bpel:copy>
                     </bpel:assign>
                     <bpel:reply name="ReplyToFireEmployeeFromBusiness"
 						operation="FireEmployeeFromBusiness" partnerLink="bpelProcessPartner"

@@ -7,7 +7,7 @@
                 <graphicalData x="149" y="51" width="237" height="193"/>
                 <properties>
                     <property name="updated"/>
-                    <property name=";INDEX" value="0"/>
+                    <property name="" value="0"/>
                     <property-collection name="1900ac25-62ae-4274-bf82-650fb233151a">
                         <property name="choice.expression" value="#[flowVars.accept == 'application/xml']"/>
                     </property-collection>
@@ -23,7 +23,7 @@
                 <pattern name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="581007d2-1860-4015-9281-01fd53a1f21f">
                     <properties>
                         <property name="updated"/>
-                        <property name=";INDEX" value="0"/>
+                        <property name="" value="0"/>
                         <property-collection name="1900ac25-62ae-4274-bf82-650fb233151a">
                             <property name="choice.expression" value="#[flowVars.accept == 'application/xml']"/>
                         </property-collection>

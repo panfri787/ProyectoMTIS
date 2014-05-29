@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/BoolResponse/" xmlns:tns="http://www.example.org/BoolResponse/" elementFormDefault="qualified">
+
+
+
+    <element name="BoolResponse" type="tns:BoolResponse"></element>
+    
+    <complexType name="BoolResponse">
+    	<sequence>
+    		<element name="Ok" type="boolean"></element>
+    		<element name="Error" type="string"></element>
+    	</sequence>
+    </complexType>
+</schema>

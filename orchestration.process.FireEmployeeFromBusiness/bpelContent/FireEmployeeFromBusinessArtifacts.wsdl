@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<definitions xmlns:tns="http://www.example.org/FireEmployeeFromBusiness/" targetNamespace="http://www.example.org/FireEmployeeFromBusiness/Artifacts" xmlns="http://schemas.xmlsoap.org/wsdl/">
-  <partnerLinkType name="FireEmployeeFromBusinessPLT" xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:tns="http://www.example.org/FireEmployeeFromBusiness/" xmlns:tns2="http://www.example.org/FireEmployeeFromBusiness/Artifacts" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:wsdl="http://www.example.org/isEmployeeWorkingAtThisBusiness/" targetNamespace="http://www.example.org/FireEmployeeFromBusiness/Artifacts">
+  <partnerLinkType xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype" name="FireEmployeeFromBusinessPLT">
     <role name="FireEmployeeFromBusinessRole" portType="tns:FireEmployeeFromBusiness"/>
   </partnerLinkType>
-  <import location="FireEmployeeFromBusiness.wsdl" namespace="http://www.example.org/FireEmployeeFromBusiness/"/>
+    <plnk:partnerLinkType name="isEmployeeWorkingAtThisBusinessPLT">
+    <plnk:role name="isEmployeeWorkingAtThisBusinessPLRole" portType="wsdl:isEmployeeWorkingAtThisBusiness"/>
+  </plnk:partnerLinkType>
+    <import location="FireEmployeeFromBusiness.wsdl" namespace="http://www.example.org/FireEmployeeFromBusiness/"/>
+    <import location="isEmployeeWorkingAtThisBusiness.wsdl" namespace="http://www.example.org/isEmployeeWorkingAtThisBusiness/"/>
 </definitions>

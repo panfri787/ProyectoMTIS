@@ -10,6 +10,7 @@ import javax.ws.rs.core.Response;
 
 import proyectomtis.business.JSON;
 import proyectomtis.persistance.IsOkAndFireEmployeeReportDAO;
+import proyectomtis.ws.soap.fireemployee.FireEmployeeReport;
 import proyectomtis.ws.soap.fireemployee.IsOkAndFireEmployeeReport;
 
 /**
@@ -18,6 +19,8 @@ import proyectomtis.ws.soap.fireemployee.IsOkAndFireEmployeeReport;
 @Path("/isOkAndFireEmployeeReports")
 @Produces("application/json")
 public class IsOkAndFireEmployeeReportREST {
+	
+	private static int processId = 0;
 
 	/**
 	 * Method processing HTTP GET requests, producing "application/json" MIME
@@ -56,6 +59,11 @@ public class IsOkAndFireEmployeeReportREST {
 		IsOkAndFireEmployeeReport resource = (IsOkAndFireEmployeeReport) JSON.unmarshall(resourceJSON, IsOkAndFireEmployeeReport.class);
 
 		if (resource != null) {
+			
+			FireEmployeeReport report = resource.getFireEmployeeReport();
+			report.setProcessId(processId);
+			processId++;
+			
 			IsOkAndFireEmployeeReportDAO.save(resource);
 
 			// TODO Componer la uri con la location del recurso creado

@@ -45,13 +45,13 @@ public class EmployeeDAO {
 		
 		EmployeeTO employee;
 
-		employee = new EmployeeTO("1");
+		employee = new EmployeeTO("1234T", "Borja Lopez Cordero");
 		save(employee);
 
-		employee = new EmployeeTO("2");
+		employee = new EmployeeTO("4567F", "Pablo Verdu Romero");
 		save(employee);
 
-		employee = new EmployeeTO("3");
+		employee = new EmployeeTO("3784O", "Enrique Churrero");
 		save(employee);
 		
 	}

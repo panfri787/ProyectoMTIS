@@ -12,7 +12,7 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
 http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd">
     <flow name="FireEmployee_ESBFlowDeprecated" doc:name="FireEmployee_ESBFlowDeprecated">
-        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" path="FireEmployee2" doc:name="HTTP"/>
+        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8078" path="FireEmployee2" doc:name="HTTP"/>
         <json:json-to-object-transformer returnClass="esb.FireEmployeeRequestParameters" encoding="UTF-8" doc:name="JSON to Object"/>
         <component class="esb.CallFireEmployeeBPEL_SOAP" doc:name="Java"/>
         <echo-component doc:name="Echo"/>
@@ -20,7 +20,7 @@ http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/
         <json:object-to-json-transformer doc:name="Object to JSON"/>
     </flow>
     <flow name="FireEmployee_ESBFlow2" doc:name="FireEmployee_ESBFlow2">
-        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" path="FireEmployee" doc:name="HTTP"/>
+        <http:inbound-endpoint exchange-pattern="request-response" host="www.esbhost.com" port="8079" path="FireEmployee" doc:name="HTTP"/>
         <set-variable variableName="accept" value="#[message.inboundProperties.Accept]" doc:name="Header Accept"/>
         <flow-ref name="ESB_AllDataTypeToJavaFireEmployeeRequestFlow1" doc:name="AllDataTypeToJavaFireEmployeeRequest"/>
 
@@ -35,5 +35,7 @@ http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/
         <cxf:jaxws-client operation="FireEmployee" clientClass="proyectomtis.ws.soap.fireemployeebusiness.FireEmployee" port="FireEmployeeSOAP" doc:name="SOAP"/>
         <http:outbound-endpoint exchange-pattern="request-response" method="POST" address="http://www.odehost.com:8080/ode/processes/FireEmployee.FireEmployeeSOAP/" doc:name="HTTP" responseTimeout="120000"/>
     </sub-flow>
+    
+    
 
 </mule>
