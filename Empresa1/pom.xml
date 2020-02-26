@@ -8,7 +8,7 @@
 	<name>ProuyectoMTIS Empresa1</name>
 
 	<properties>
-		<jackson-2-version>2.3.1</jackson-2-version>
+		<jackson-2-version>2.10.2</jackson-2-version>
 		<jersey-version>1.8</jersey-version>
 		<axis2-version>1.6.2</axis2-version>
 	</properties>
